@@ -409,8 +409,10 @@ img { max-width: 100%; height: auto; display: block; }
   -webkit-filter: none !important;
   mix-blend-mode: normal !important;
   position: relative;
-  z-index: 5;
-  background: transparent !important;
+  z-index: 10000;
+  background-color: #ffffff !important;
+  border-radius: 50%;
+  padding: 4px;
 }
 .mil-logo img,
 .mil-frame-top .mil-logo img,
