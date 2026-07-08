@@ -190,7 +190,88 @@
 }
 
 /* ...keep the rest of your original style block below this (slideshow, circle photo, review avatar etc.) unchanged */
+/* ===== Banner responsive fixes ===== */
 
+.mil-banner-content {
+    width: 100%;
+}
+
+/* Logo */
+.mil-banner-logo {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin: 0 auto 20px auto;
+}
+
+/* Heading */
+.mil-banner-content h3 {
+    font-size: clamp(24px, 5vw, 40px);
+    line-height: 1.3;
+}
+
+/* Paragraph */
+.mil-banner-content p {
+    font-size: clamp(14px, 2vw, 17px);
+    line-height: 1.6;
+}
+
+/* Buttons row: stack on small screens, side by side on larger */
+.mil-banner-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.mil-btn-space {
+    margin-bottom: 20px;
+}
+
+/* Circular "scroll down" text + arrow: reposition for mobile so it doesn't overlap content */
+.mil-circle-text {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-top: 40px;
+}
+
+.mil-circle-text .mil-ct-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.mil-circle-text .mil-button {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 767px) {
+    .mil-banner-logo {
+        max-width: 260px;
+    }
+
+    .mil-banner-content h3 {
+        text-align: center;
+    }
+
+    .mil-banner-content .row {
+        text-align: center;
+    }
+
+    .mil-circle-text {
+        width: 110px;
+        height: 110px;
+        margin: 30px auto 0 auto;
+        position: static;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .mil-banner-logo {
+        max-width: 380px;
+    }
+}
 
 </style>
 </head>
