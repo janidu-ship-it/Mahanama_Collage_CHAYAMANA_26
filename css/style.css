@@ -2015,10 +2015,24 @@ dodecahedron
 .mil-animation {
   position: absolute;
   display: inline-block;
-  width: clamp(320px, 18vw, 420px);
-  height: clamp(320px, 18vw, 420px);
-  opacity: 0.2;
+  width: clamp(420px, 22vw, 720px);
+  height: clamp(420px, 22vw, 720px);
+  opacity: 0.22;
   pointer-events: none;
+}
+
+@media screen and (max-width: 1400px) {
+  .mil-animation {
+    width: clamp(360px, 24vw, 520px);
+    height: clamp(360px, 24vw, 520px);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .mil-animation {
+    width: 320px;
+    height: 320px;
+  }
 }
 
 .mil-position-1 {
