@@ -2015,8 +2015,8 @@ dodecahedron
 .mil-animation {
   position: absolute;
   display: inline-block;
-  width: 300px;
-  height: 300px;
+  width: clamp(320px, 18vw, 420px);
+  height: clamp(320px, 18vw, 420px);
   opacity: 0.2;
   pointer-events: none;
 }
@@ -2040,15 +2040,15 @@ dodecahedron
   -webkit-animation-delay: 0.5s;
           animation-delay: 0.5s;
 }
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1600px) {
   .mil-position-2 {
     display: none;
   }
 }
 
 .mil-position-3 {
-  bottom: -100px;
-  right: 35%;
+  bottom: -90px;
+  right: 30%;
 }
 .mil-position-3 .mil-pentagon div {
   border-top: 1px solid rgb(255, 255, 255);
