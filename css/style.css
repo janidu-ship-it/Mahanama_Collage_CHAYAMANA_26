@@ -390,6 +390,22 @@ img { max-width: 100%; height: auto; display: block; }
   max-height: 48px !important;
   width: auto !important;
 }
+
+/* Ensure the top-left crest keeps its original colours (disable any brightness/grayscale/invert) */
+.mil-frame-top > a.mil-logo img,
+.mil-frame .mil-frame-top > a.mil-logo img {
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  transition: none !important;
+}
+.mil-frame-top > a.mil-logo img:hover,
+.mil-frame .mil-frame-top > a.mil-logo img:hover {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
 html, body {
   width: 100%;
   min-height: 100%;
