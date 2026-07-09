@@ -55,117 +55,31 @@ p.s. I am available for Freelance hire (UI design, web development). email: mill
 
 main
 
-------------------------------------------- */
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Outfit", sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  color: rgba(0, 0, 0, 0.5);
-  line-height: 150%;
-  -ms-scroll-chaining: none;
-      overscroll-behavior: none;
-}
-@media screen and (max-width: 768px) {
-  html,
-body {
-    font-size: 15px;
-  }
-}
-
-*::-moz-selection {
-  color: inherit;
-  background-color: transparent;
-}
-
-*::selection {
-  color: inherit;
-  background-color: transparent;
-}
-
-.mil-wrapper {
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-}
-
-.container {
-  pointer-events: all;
-}
-
-.mil-relative {
-  position: relative;
-}
-
-.mil-o-hidden {
-  overflow: hidden;
-}
-
-.mil-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.mil-vert-between {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  height: 100%;
-}
-
-@media screen and (max-width: 992px) {
-  .mil-mobile-hidden {
-    display: none;
-  }
-}
-
-section {
-  position: relative;
-  overflow: hidden;
-}
-
 /* -------------------------------------------
 
-typography
+animations disabled (removed per user request)
 
 ------------------------------------------- */
-h1,
-.mil-h1,
-h2,
-.mil-h12,
-h3,
-.mil-h3,
-h4,
-.mil-h4,
-h5,
-.mil-h5,
-h6,
-.mil-h6 {
-  font-family: "Outfit", sans-serif;
-  color: rgb(0, 0, 0);
-  font-weight: 500;
-  line-height: 120%;
+.mil-animation-frame {
+  display: none !important;
 }
-@media screen and (max-width: 768px) {
+
+.mil-animation {
+  animation: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* keep position helpers but do not render */
+.mil-position-1, .mil-position-2, .mil-position-3, .mil-position-4 {
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+}
   h1 br,
 .mil-h1 br,
 h2 br,
