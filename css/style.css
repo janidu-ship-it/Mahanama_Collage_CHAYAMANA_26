@@ -383,20 +383,20 @@ img { max-width: 100%; height: auto; display: block; }
   background: transparent !important;
 }
 
-/* Make the small round crest in the top-left smaller (overrides inline sizes) */
+/* Restore the small round crest in the top-left to the original compact size */
 .mil-frame .mil-frame-top .mil-logo img,
 .mil-menu-frame .mil-frame-top .mil-logo img {
-  /* desktop default: larger crest for PC view */
-  height: 80px !important;
-  max-height: 80px !important;
+  /* revert: compact crest matching original markup */
+  height: 40px !important;
+  max-height: 40px !important;
   width: auto !important;
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (max-width: 768px) {
   .mil-frame .mil-frame-top .mil-logo img,
   .mil-menu-frame .mil-frame-top .mil-logo img {
-    height: 120px !important;
-    max-height: 120px !important;
+    height: 36px !important;
+    max-height: 36px !important;
   }
 }
 
