@@ -200,6 +200,14 @@
 .mil-preloader .mil-link.mil-arrow-place {
     display: none !important;
 }
+
+/* ALSO hide global side arrows on this page (prev/next controls) */
+.mil-slider-nav .mil-slider-arrow,
+.mil-slider-arrow.mil-prev,
+.mil-slider-arrow.mil-revi-next,
+.mil-slider-arrow.mil-revi-prev {
+    display: none !important;
+}
 @keyframes showThenHideBox {
     0% { opacity: 0; transform: scaleX(0); }
     25% { opacity: 1; transform: scaleX(1); }
