@@ -103,20 +103,9 @@ main
 
 /* Preloader square + sequencing: square animates first, then logo fades in */
 .mil-reveal-frame .preloader-chaya-square {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(0.9);
-  width: 56%;
-  height: 46%;
-  background: #ff9f00;
-  border-radius: 6px;
-  z-index: 1;
-  opacity: 0.95;
-  box-shadow: 0 12px 40px rgba(255,159,0,0.18);
-  /* start after the intro text fades out (text ends ~3s) */
-  animation: preloaderSquare 1.6s cubic-bezier(.22,1,.36,1) forwards;
-  animation-delay: 3s;
+  /* Hidden per user request: only remove this small preloader square */
+  display: none !important;
+  animation: none !important;
 }
 
 .mil-preloader-animation .mil-animation-2 img.preloader-chaya-logo {
