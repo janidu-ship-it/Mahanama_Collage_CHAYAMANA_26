@@ -178,24 +178,26 @@
     margin: 0;
     background: #ff8c00; /* change to your exact orange if different */
     opacity: 0;
-    animation: showThenHideBox 1.4s ease forwards;
-    animation-delay: 2.6s;
     transform-origin: left;
+    will-change: transform, opacity;
+    animation: showThenHideBox 1.8s cubic-bezier(.22,1,.36,1) forwards;
+    animation-delay: 2.6s;
 }
 
 .mil-preloader-animation .mil-animation-2 img {
     opacity: 0;
     animation: fadeInLogo 0.8s ease forwards;
-    animation-delay: 4.2s;
+    animation-delay: 4.5s;
 }
 
 @keyframes fadeOutText {
     to { opacity: 0; visibility: hidden; }
 }
 @keyframes showThenHideBox {
-    0% { opacity: 1; transform: scaleX(1); }
-    60% { opacity: 1; transform: scaleX(1); }
-    100% { opacity: 1; transform: scaleX(0); }
+    0% { opacity: 0; transform: scaleX(0); }
+    25% { opacity: 1; transform: scaleX(1); }
+    65% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 0; transform: scaleX(0); }
 }
 @keyframes fadeInLogo {
     to { opacity: 1; }
