@@ -406,6 +406,28 @@ img { max-width: 100%; height: auto; display: block; }
   filter: none !important;
   -webkit-filter: none !important;
 }
+
+/* Put the frame and its logo above backdrop-filter overlays that invert colours */
+.mil-frame,
+.mil-frame-top,
+.mil-menu-frame .mil-frame-top {
+  position: relative;
+  z-index: 10050 !important;
+}
+.mil-frame-top > a.mil-logo,
+.mil-menu-frame .mil-frame-top > a.mil-logo {
+  position: relative;
+  z-index: 10060 !important;
+}
+
+/* If the logo file is IMG_8922.PNG or similar, ensure it's never recolored */
+.mil-frame-top > a.mil-logo img[src*="IMG_8922"],
+.mil-frame-top > a.mil-logo img[src*="IMG_8922.PNG"],
+.mil-frame-top > a.mil-logo img[src*="IMG_8922.png"] {
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+}
 html, body {
   width: 100%;
   min-height: 100%;
