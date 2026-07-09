@@ -61,8 +61,8 @@ main
 .chaya-wrap {
   position: relative;
   display: inline-block;
-  /* restored: CHAYAMANA banner logo previous size */
-  width: clamp(260px, 42vw, 520px);
+  /* enlarged: increase main CHAYAMANA banner image for stronger visual */
+  width: clamp(340px, 72vw, 920px);
   margin: 0 0 10px 0;
 }
 .chaya-logo {
@@ -398,6 +398,12 @@ img { max-width: 100%; height: auto; display: block; }
     height: 36px !important;
     max-height: 36px !important;
   }
+}
+
+/* Hide the small top-left badge as requested */
+.mil-frame-top .mil-logo,
+.mil-frame-top .mil-logo img {
+  display: none !important;
 }
 
 @media screen and (max-width: 768px) {
