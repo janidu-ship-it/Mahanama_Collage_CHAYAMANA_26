@@ -188,6 +188,17 @@ animations disabled (removed per user request)
 }
 
 .mil-reveal-box { display: none !important; }
+
+/* Emergency override: hide preloader overlay entirely so content is visible */
+.mil-preloader {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.mil-preloader-animation, .mil-pos-abs, .mil-preloader .mil-preloader-animation {
+  display: none !important;
+}
+.mil-main-transition { opacity: 1 !important; visibility: visible !important; }
 h2 br,
 .mil-h12 br,
 h3 br,
