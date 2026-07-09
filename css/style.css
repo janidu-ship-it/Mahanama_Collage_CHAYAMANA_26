@@ -61,8 +61,8 @@ main
 .chaya-wrap {
   position: relative;
   display: inline-block;
-  /* enlarged: increase main CHAYAMANA banner image for stronger visual */
-  width: clamp(340px, 72vw, 920px);
+  /* restored: CHAYAMANA banner logo previous size */
+  width: clamp(260px, 42vw, 520px);
   margin: 0 0 10px 0;
 }
 .chaya-logo {
