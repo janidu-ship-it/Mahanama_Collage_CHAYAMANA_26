@@ -141,8 +141,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 86%;
-    max-width: 420px; /* smaller group width to reduce batch size */
+    width: 90%;
+    max-width: 500px;
     text-align: center;
 }
 
@@ -157,8 +157,8 @@
 .mil-reveal-frame {
     position: relative;
     display: inline-block;
-    width: clamp(140px, 40vw, 260px); /* reduced sizes */
-    height: clamp(48px, 14vw, 90px);
+    width: clamp(180px, 60vw, 320px);
+    height: clamp(60px, 20vw, 110px);
     margin: 0 auto;
 }
 
@@ -192,21 +192,6 @@
 
 @keyframes fadeOutText {
     to { opacity: 0; visibility: hidden; }
-}
-
-/* Hide left/right arrows that appear over the preloader */
-.mil-preloader .mil-slider-arrow,
-.mil-preloader .mil-back-to-top,
-.mil-preloader .mil-link.mil-arrow-place {
-    display: none !important;
-}
-
-/* ALSO hide global side arrows on this page (prev/next controls) */
-.mil-slider-nav .mil-slider-arrow,
-.mil-slider-arrow.mil-prev,
-.mil-slider-arrow.mil-revi-next,
-.mil-slider-arrow.mil-revi-prev {
-    display: none !important;
 }
 @keyframes showThenHideBox {
     0% { opacity: 0; transform: scaleX(0); }
