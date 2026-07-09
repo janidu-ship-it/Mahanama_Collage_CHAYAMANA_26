@@ -24,30 +24,64 @@
 .mil-preloader-animation .mil-animation-1 {
     opacity: 1;
     visibility: visible;
-    animation: fadeOutText 0.6s ease forwards;
-    animation-delay: 2s;
+    animation: fadeOutText 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 2.2s;
+}
+.mil-reveal-frame {
+    position: relative;
+    display: inline-block;
+    width: clamp(220px, 56vw, 360px);
+    height: clamp(80px, 15vw, 130px);
+    margin: 0 auto;
+}
+.mil-reveal-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.mil-reveal-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 40px rgba(255, 180, 60, 0.14);
+    pointer-events: none;
 }
 .mil-reveal-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 140%;
+    transform: translate(-50%, -50%) skewX(-14deg);
+    background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.35), rgba(255,255,255,0.06));
+    filter: blur(10px);
     opacity: 0;
-    animation: showThenHideBox 1.4s ease forwards;
-    animation-delay: 2.6s;
-    transform-origin: left;
+    animation: lensSweep 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 1.1s;
+    border-radius: 50%;
+    pointer-events: none;
 }
 .mil-preloader-animation .mil-animation-2 img {
     opacity: 0;
-    animation: fadeInLogo 0.8s ease forwards;
-    animation-delay: 4.2s;
+    transform: scale(0.92);
+    animation: fadeInLogo 1s ease-out forwards;
+    animation-delay: 2.4s;
 }
 @keyframes fadeOutText {
-    to { opacity: 0; visibility: hidden; }
+    0% { opacity: 1; visibility: visible; transform: translateY(0); }
+    100% { opacity: 0; visibility: hidden; transform: translateY(-18px); }
 }
-@keyframes showThenHideBox {
-    0% { opacity: 1; transform: scaleX(1); }
-    60% { opacity: 1; transform: scaleX(1); }
-    100% { opacity: 1; transform: scaleX(0); }
+@keyframes lensSweep {
+    0% { width: 0; opacity: 0; }
+    40% { width: 90%; opacity: 0.9; }
+    70% { width: 110%; opacity: 0.55; }
+    100% { width: 140%; opacity: 0; }
 }
 @keyframes fadeInLogo {
-    to { opacity: 1; }
+    0% { opacity: 0; transform: scale(0.92); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
 /* Photo slideshow: fades between images every 5 seconds */
