@@ -52,34 +52,8 @@ p.s. I am available for Freelance hire (UI design, web development). email: mill
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css);
 /* -------------------------------------------
-
 main
-
-/* -------------------------------------------
-
-animations disabled (removed per user request)
-
 ------------------------------------------- */
-.mil-animation-frame {
-  display: none !important;
-}
-
-.mil-animation {
-  animation: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* keep position helpers but do not render */
-.mil-position-1, .mil-position-2, .mil-position-3, .mil-position-4 {
-  top: auto !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-}
   h1 br,
 .mil-h1 br,
 
@@ -168,50 +142,9 @@ animations disabled (removed per user request)
 }
 
 /* Override: disable preloader square & sequencing so intro words remain visible */
-.preloader-chaya-square,
-.chaya-wrap .chaya-square {
-  display: none !important;
-  animation: none !important;
-}
 
-.mil-preloader-animation .mil-animation-2 img.preloader-chaya-logo {
-  animation: none !important;
-  animation-delay: 0s !important;
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-.mil-preloader-animation .mil-pos-abs.mil-animation-1 {
-  animation: none !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-.mil-reveal-box { display: none !important; }
-
-/* Emergency override: hide preloader overlay entirely so content is visible */
-.mil-preloader {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-.mil-preloader-animation, .mil-pos-abs, .mil-preloader .mil-preloader-animation {
-  display: none !important;
-}
-.mil-main-transition { opacity: 1 !important; visibility: visible !important; }
-h2 br,
-.mil-h12 br,
-h3 br,
-.mil-h3 br,
-h4 br,
-.mil-h4 br,
-h5 br,
-.mil-h5 br,
-h6 br,
-.mil-h6 br {
-    display: none;
-  }
-}
+/* Re-enabled animations and preloader. Removed emergency overrides so
+   the preloader intro text, reveal square, and logo animations can run. */
 
 h1,
 .mil-h1 {
