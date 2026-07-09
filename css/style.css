@@ -400,10 +400,11 @@ img { max-width: 100%; height: auto; display: block; }
   }
 }
 
-/* Hide the small top-left badge as requested */
+/* Restore the small top-left badge to visible */
 .mil-frame-top .mil-logo,
 .mil-frame-top .mil-logo img {
-  display: none !important;
+  display: inline-block !important;
+  vertical-align: middle;
 }
 
 @media screen and (max-width: 768px) {
