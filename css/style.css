@@ -386,9 +386,27 @@ img { max-width: 100%; height: auto; display: block; }
 /* Make the small round crest in the top-left smaller (overrides inline sizes) */
 .mil-frame .mil-frame-top .mil-logo img,
 .mil-menu-frame .mil-frame-top .mil-logo img {
-  height: 48px !important;
-  max-height: 48px !important;
+  /* desktop default: larger crest for PC view */
+  height: 80px !important;
+  max-height: 80px !important;
   width: auto !important;
+}
+
+@media screen and (min-width: 1400px) {
+  .mil-frame .mil-frame-top .mil-logo img,
+  .mil-menu-frame .mil-frame-top .mil-logo img {
+    height: 120px !important;
+    max-height: 120px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* keep small on mobile */
+  .mil-frame .mil-frame-top .mil-logo img,
+  .mil-menu-frame .mil-frame-top .mil-logo img {
+    height: 48px !important;
+    max-height: 48px !important;
+  }
 }
 
 /* Ensure the top-left crest keeps its original colours (disable any brightness/grayscale/invert) */
