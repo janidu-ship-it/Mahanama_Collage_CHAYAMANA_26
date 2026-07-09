@@ -61,8 +61,8 @@ main
 .chaya-wrap {
   position: relative;
   display: inline-block;
-  /* reduced badge size to a normal compact size */
-  width: clamp(100px, 12vw, 160px);
+  /* restored: CHAYAMANA banner logo previous size */
+  width: clamp(260px, 42vw, 520px);
   margin: 0 0 10px 0;
 }
 .chaya-logo {
@@ -95,7 +95,8 @@ main
 }
 
 @media screen and (max-width: 768px) {
-  .chaya-wrap { width: clamp(90px, 18vw, 140px); }
+  /* mobile: restore smaller banner size but larger than the compact badge */
+  .chaya-wrap { width: clamp(160px, 60vw, 320px); }
   .chaya-square { width: 64%; height: 46%; border-radius: 4px; }
 }
 
@@ -380,6 +381,14 @@ img { max-width: 100%; height: auto; display: block; }
   mix-blend-mode: normal !important;
   opacity: 1 !important;
   background: transparent !important;
+}
+
+/* Make the small round crest in the top-left smaller (overrides inline sizes) */
+.mil-frame .mil-frame-top .mil-logo img,
+.mil-menu-frame .mil-frame-top .mil-logo img {
+  height: 48px !important;
+  max-height: 48px !important;
+  width: auto !important;
 }
 html, body {
   width: 100%;
