@@ -104,21 +104,9 @@ main
 .chaya-wrap .chaya-square { display: none !important; }
 
 /* Preloader square + sequencing: square animates first, then logo fades in */
-.mil-reveal-frame .preloader-chaya-square {
-  /* Show and animate the preloader square (matches the banner chaya-square visuals) */
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 60%;
-  height: 48%;
-  background: #ff9f00;
-  border-radius: 6px;
-  z-index: 1;
-  opacity: 0.95;
-  box-shadow: 0 8px 30px rgba(255,159,0,0.18);
-  animation: preloaderSquare 1.8s cubic-bezier(.22,1,.36,1) forwards;
-  animation-delay: 2.6s;
+.mil-reveal-frame .preloader-chaya-square,
+.mil-reveal-box {
+  display: none !important;
 }
 
 .mil-preloader-animation .mil-animation-2 img.preloader-chaya-logo {
