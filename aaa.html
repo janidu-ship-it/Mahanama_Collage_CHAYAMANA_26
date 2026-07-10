@@ -238,6 +238,12 @@
     .gold-blob { filter: blur(30px); }
     .gold-blob.b1, .gold-blob.b2, .gold-blob.b3 { width: 60vw; height: 60vw; }
 }
+
+/* small gold accent for about photo */
+.about-gold { position: absolute; inset: auto 0 10% 60%; z-index: 0; pointer-events: none; }
+.about-gold .gold-blob.small { width: 22vw; height: 22vw; filter: blur(28px); background: radial-gradient(circle at 30% 30%, rgba(255,200,80,0.18) 0%, rgba(255,140,0,0.06) 45%, transparent 70%); animation: floatA 18s ease-in-out infinite; }
+
+@keyframes floatA { 0% { transform: translateY(0) scale(1);} 50% { transform: translateY(-6%) scale(1.02);} 100% { transform: translateY(0) scale(1);} }
 </style>
 </head>
 
@@ -534,7 +540,10 @@ appreciation for photography.</p>
 
                                 <div class="mil-about-photo mil-mb-90">
                                     <div class="mil-lines-place"></div>
-                                    <div class="mil-up mil-img-frame mil-photo-slideshow" style="padding-bottom: 160%;">
+                                    <div class="mil-up mil-img-frame mil-photo-slideshow" style="padding-bottom: 160%; position: relative;">
+                                        <div class="gold-anim about-gold" aria-hidden="true">
+                                            <span class="gold-blob small bA"></span>
+                                        </div>
                                         <img src="Pics/FB_IMG_1783184384167.jpg.jpeg" class="mil-slide-img mil-slide-active">
                                         <img src="Pics/EQ0A4864.jpg" class="mil-slide-img">
                                     </div>
