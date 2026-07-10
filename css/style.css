@@ -398,6 +398,17 @@ img { max-width: 100%; height: auto; display: block; }
     height: 36px !important;
     max-height: 36px !important;
   }
+
+/* Ensure about-section images sit above the gold blob accent */
+.mil-up.mil-img-frame { position: relative; }
+.mil-up.mil-img-frame .gold-anim.about-gold { z-index: 0; pointer-events: none; }
+.mil-up.mil-img-frame .mil-slide-img { position: relative; z-index: 2; }
+
+/* small gold accent default sizes for larger screens */
+.about-gold { position: absolute; inset: auto 0 10% 60%; z-index: 0; }
+.about-gold .gold-blob.small { width: 22vw; height: 22vw; filter: blur(28px); background: radial-gradient(circle at 30% 30%, rgba(255,200,80,0.18) 0%, rgba(255,140,0,0.06) 45%, transparent 70%); animation: floatA 18s ease-in-out infinite; }
+
+@keyframes floatA { 0% { transform: translateY(0) scale(1);} 50% { transform: translateY(-6%) scale(1.02);} 100% { transform: translateY(0) scale(1);} }
 }
 
 /* Restore the small top-left badge to visible */
