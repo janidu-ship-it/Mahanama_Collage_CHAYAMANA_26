@@ -100,13 +100,44 @@ main
   .chaya-square { width: 64%; height: 46%; border-radius: 4px; }
 }
 
-/* hide the on-page square (we'll use the preloader square instead) */
-.chaya-wrap .chaya-square { display: none !important; }
-
 /* Preloader square + sequencing: square animates first, then logo fades in */
 .mil-reveal-frame .preloader-chaya-square,
 .mil-reveal-box {
   display: none !important;
+}
+
+/* Portfolio form square decoration */
+.chaya-form-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+}
+.chaya-form-wrap form {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.chaya-form-square {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 56px;
+  height: 56px;
+  background: #ff9f00;
+  border-radius: 14px;
+  z-index: 0;
+  box-shadow: 0 14px 32px rgba(255,159,0,0.24);
+  animation: chayaPulse 1.8s cubic-bezier(.22,1,.36,1) infinite;
+}
+@media screen and (max-width: 768px) {
+  .chaya-form-square {
+    top: -8px;
+    right: -8px;
+    width: 44px;
+    height: 44px;
+  }
 }
 
 .mil-preloader-animation .mil-animation-2 img.preloader-chaya-logo {
