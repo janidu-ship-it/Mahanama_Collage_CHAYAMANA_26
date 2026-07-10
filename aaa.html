@@ -209,6 +209,39 @@
 </style>
 </head>
 
+<style>
+/* Gold background blobs for hero */
+.mil-banner { position: relative; overflow: hidden; }
+.mil-banner-content { position: relative; z-index: 2; }
+.gold-anim { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.gold-blob { position: absolute; border-radius: 50%; filter: blur(40px); mix-blend-mode: screen; opacity: 0.9; }
+.gold-blob.b1 { width: 36vmax; height: 36vmax; left: 10%; top: 20%; background: radial-gradient(circle at 35% 35%, rgba(255,197,79,0.20) 0%, rgba(255,155,0,0.06) 40%, transparent 60%); animation: float1 20s ease-in-out infinite; }
+.gold-blob.b2 { width: 28vmax; height: 28vmax; left: 78%; top: 36%; background: radial-gradient(circle at 40% 30%, rgba(255,215,102,0.16) 0%, rgba(255,140,0,0.05) 45%, transparent 70%); animation: float2 24s ease-in-out infinite; }
+.gold-blob.b3 { width: 30vmax; height: 30vmax; left: 55%; top: 82%; background: radial-gradient(circle at 50% 50%, rgba(255,180,60,0.14) 0%, rgba(255,130,0,0.04) 50%, transparent 75%); animation: float3 26s ease-in-out infinite; }
+
+@keyframes float1 {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-6%) scale(1.03); }
+    100% { transform: translateY(0) scale(1); }
+}
+@keyframes float2 {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8%) scale(1.04); }
+    100% { transform: translateY(0) scale(1); }
+}
+@keyframes float3 {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10%) scale(1.05); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@media screen and (max-width: 768px) {
+    .gold-blob { filter: blur(30px); }
+    .gold-blob.b1, .gold-blob.b2, .gold-blob.b3 { width: 60vw; height: 60vw; }
+}
+</style>
+</head>
+
 <body>
 
     <!-- wrapper -->
@@ -417,7 +450,12 @@
 
                         <div class="container">
                             <div class="mil-banner-content mil-up">
-<br>
+                                <div class="gold-anim" aria-hidden="true">
+                                    <span class="gold-blob b1"></span>
+                                    <span class="gold-blob b2"></span>
+                                    <span class="gold-blob b3"></span>
+                                </div>
+    <br>
 <div class="chaya-wrap">
     <div class="chaya-square" aria-hidden="true"></div>
     <img class="chaya-logo" src="Pics/chayamana logo.png" alt="CHAYAMANA logo">
