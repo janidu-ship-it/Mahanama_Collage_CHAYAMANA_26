@@ -541,11 +541,8 @@ appreciation for photography.</p>
                                 <div class="mil-about-photo mil-mb-90">
                                     <div class="mil-lines-place"></div>
                                     <div class="mil-up mil-img-frame mil-photo-slideshow" style="padding-bottom: 160%; position: relative;">
-                                        <div class="gold-anim about-gold" aria-hidden="true">
-                                            <span class="gold-blob small bA"></span>
-                                        </div>
-                                        <img src="Pics/FB_IMG_1783184384167.jpg.jpeg" class="mil-slide-img mil-slide-active">
-                                        <img src="Pics/EQ0A4864.jpg" class="mil-slide-img">
+                                        <img src="Pics/FB_IMG_1783184384167.jpg.jpeg" class="mil-slide-img mil-slide-active" alt="Chayamana photo 1">
+                                        <img src="Pics/EQ0A4864.jpg" class="mil-slide-img" alt="Chayamana photo 2">
                                     </div>
                                 </div>
 
@@ -1211,17 +1208,30 @@ appreciation for photography.</p>
     });
     </script>
 
-    <!-- photo slideshow script: cycles images every 5 seconds -->
+    <!-- photo slideshow script: cycles about section images every 5 seconds -->
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         const slides = document.querySelectorAll('.mil-photo-slideshow .mil-slide-img');
         let current = 0;
 
         if (slides.length > 1) {
+            slides.forEach((slide, index) => {
+                slide.style.opacity = index === 0 ? '1' : '0';
+                slide.style.transition = 'opacity 1s ease-in-out';
+                slide.style.position = 'absolute';
+                slide.style.top = '0';
+                slide.style.left = '0';
+                slide.style.width = '100%';
+                slide.style.height = '100%';
+                slide.style.objectFit = 'cover';
+            });
+
             setInterval(function () {
                 slides[current].classList.remove('mil-slide-active');
+                slides[current].style.opacity = '0';
                 current = (current + 1) % slides.length;
                 slides[current].classList.add('mil-slide-active');
+                slides[current].style.opacity = '1';
             }, 5000);
         }
     });
