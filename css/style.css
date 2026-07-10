@@ -409,6 +409,9 @@ img { max-width: 100%; height: auto; display: block; }
 .about-gold .gold-blob.small { width: 22vw; height: 22vw; filter: blur(28px); background: radial-gradient(circle at 30% 30%, rgba(255,200,80,0.18) 0%, rgba(255,140,0,0.06) 45%, transparent 70%); animation: floatA 18s ease-in-out infinite; }
 
 @keyframes floatA { 0% { transform: translateY(0) scale(1);} 50% { transform: translateY(-6%) scale(1.02);} 100% { transform: translateY(0) scale(1);} }
+
+/* Hide the two navigation arrows on the home reviews slider */
+.mil-reviews-nav .mil-slider-arrow { display: none !important; }
 }
 
 /* Restore the small top-left badge to visible */
