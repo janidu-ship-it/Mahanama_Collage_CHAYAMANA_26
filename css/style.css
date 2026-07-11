@@ -3156,13 +3156,28 @@ footer
   position: absolute;
   top: -10px;
   right: -10px;
-  width: 56px;
-  height: 56px;
-  background: #ff9f00;
-  border-radius: 14px;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 231, 143, 1) 0%, rgba(255, 159, 0, 1) 40%, rgba(255, 159, 0, 0.9) 65%, rgba(255, 159, 0, 0.08) 100%);
+  border-radius: 18px;
   z-index: 0;
-  box-shadow: 0 14px 32px rgba(255, 159, 0, 0.24);
+  box-shadow: 0 16px 42px rgba(255, 159, 0, 0.24), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
   animation: chayaPulse 1.8s cubic-bezier(.22, 1, .36, 1) infinite;
+  transform-origin: center;
+}
+.mil-subscribe-form::after {
+  content: "";
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 159, 0, 0.2);
+  opacity: 0.55;
+  filter: blur(2px);
+  z-index: 0;
+  animation: chayaGlow 2.6s ease-in-out infinite;
 }
 .mil-subscribe-form input {
   position: relative;
@@ -3248,7 +3263,21 @@ footer
     right: -8px;
     width: 44px;
     height: 44px;
+    border-radius: 14px;
   }
+  .mil-subscribe-form::after {
+    top: -14px;
+    right: -14px;
+    width: 60px;
+    height: 60px;
+  }
+}
+@keyframes chayaGlow {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
+  50% { transform: translateY(-4px) scale(1.05); opacity: 0.2; }
+}
+/* -------------------------------------------
+
 portfolio
 
 ------------------------------------------- */
