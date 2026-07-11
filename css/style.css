@@ -1184,7 +1184,7 @@ preloader
   background-color: rgb(0, 0, 0);
 }
 .mil-preloader .mil-preloader-animation {
-  opacity: 0;
+  opacity: 1 !important;
   position: relative;
   height: 100vh;
   color: rgb(255, 255, 255);
@@ -1204,7 +1204,7 @@ preloader
           align-items: center;
 }
 .mil-preloader .mil-preloader-animation .mil-pos-abs p {
-  opacity: 0;
+  opacity: 1 !important;
   margin-right: 15px;
 }
 @media screen and (max-width: 992px) {
@@ -3153,25 +3153,25 @@ footer
   position: absolute;
   top: -10px;
   right: -10px;
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 231, 143, 1) 0%, rgba(255, 159, 0, 1) 40%, rgba(255, 159, 0, 0.9) 65%, rgba(255, 159, 0, 0.08) 100%);
-  border-radius: 18px;
+  width: 56px;
+  height: 56px;
+  background: #ff9f00;
+  border-radius: 16px;
   z-index: 0;
-  box-shadow: 0 16px 42px rgba(255, 159, 0, 0.24), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 32px rgba(255, 159, 0, 0.24);
   animation: chayaPulse 1.8s cubic-bezier(.22, 1, .36, 1) infinite;
   transform-origin: center;
 }
 .mil-subscribe-form::after {
   content: "";
   position: absolute;
-  top: -18px;
-  right: -18px;
-  width: 76px;
-  height: 76px;
-  border-radius: 20px;
+  top: -14px;
+  right: -14px;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
   border: 1px solid rgba(255, 159, 0, 0.2);
-  opacity: 0.55;
+  opacity: 0.45;
   filter: blur(2px);
   z-index: 0;
   animation: chayaGlow 2.6s ease-in-out infinite;
@@ -3252,7 +3252,13 @@ footer
   background-color: rgba(0, 0, 0, 0.1);
 }
 .mil-subscribe-form .chaya-form-square {
-  display: none !important;
+  display: block;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 56px;
+  height: 56px;
+  z-index: 0;
 }
 @media screen and (max-width: 768px) {
   .mil-subscribe-form::before {

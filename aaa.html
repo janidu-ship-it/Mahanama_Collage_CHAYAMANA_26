@@ -171,18 +171,6 @@
     z-index: 2;
 }
 
-.mil-preloader-square {
-    position: absolute;
-    inset: 0;
-    background: rgba(255,159,0,0.16);
-    border-radius: 16px;
-    opacity: 0;
-    transform: scale(0.84);
-    z-index: 1;
-    animation: squarePulse 1.8s ease forwards;
-    animation-delay: 2.2s;
-}
-
 .mil-reveal-box {
     position: absolute;
     top: 0;
@@ -202,13 +190,6 @@
     opacity: 0;
     animation: fadeInLogo 0.8s ease forwards;
     animation-delay: 4.8s;
-}
-
-@keyframes squarePulse {
-    0% { opacity: 0; transform: scale(0.8); }
-    20% { opacity: 1; transform: scale(1); }
-    60% { opacity: 1; transform: scale(0.98); }
-    100% { opacity: 0; transform: scale(1.04); }
 }
 
 @keyframes fadeOutText {
@@ -294,7 +275,6 @@
                 </div>
  <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
-                        <span class="mil-preloader-square" aria-hidden="true"></span>
                         <p class="mil-reveal-box"></p>
                         <img src="Pics/chayamana%20logo.png" width="auto" height="auto" alt="description" class="preloader-chaya-logo">
                     </div>
@@ -482,6 +462,7 @@
                                 </div>
     <br>
 <div class="chaya-wrap">
+    <span class="chaya-square" aria-hidden="true"></span>
     <img class="chaya-logo" src="Pics/chayamana logo.png" alt="CHAYAMANA logo">
 </div>
 <br>
