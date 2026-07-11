@@ -41,7 +41,17 @@
     object-fit: contain;
 }
 .mil-reveal-box {
-    display: none !important;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,159,0,0.95);
+    transform-origin: left;
+    will-change: transform, opacity;
+    animation: showThenHideBox 1.8s cubic-bezier(.22,1,.36,1) forwards;
+    animation-delay: 2.6s;
 }
 .mil-preloader-animation .mil-animation-2 img {
     opacity: 0;
