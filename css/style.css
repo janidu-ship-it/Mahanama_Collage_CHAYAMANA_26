@@ -101,10 +101,7 @@ main
 }
 
 /* Preloader square + sequencing: square animates first, then logo fades in */
-.mil-reveal-frame .preloader-chaya-square,
-.mil-reveal-box {
-  display: none !important;
-}
+/* Keep the reveal box visible so the default animation appears */
 
 /* Portfolio form square decoration */
 .chaya-form-wrap {
