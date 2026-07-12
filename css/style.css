@@ -2778,7 +2778,7 @@ revievs
   padding: 10px;
   opacity: 1;
   border: none;
-  background-color: transparent;
+  background-color: black;
   margin: 0 !important;
   -webkit-transition: 0.4s cubic-bezier(0, 0, 0.3642, 1) !important;
   transition: 0.4s cubic-bezier(0, 0, 0.3642, 1) !important;
