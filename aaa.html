@@ -27,31 +27,11 @@
     animation: fadeOutText 0.6s ease forwards;
     animation-delay: 2s;
 }
-.mil-reveal-frame {
-    position: relative;
-    display: inline-block;
-    width: clamp(180px, 60vw, 320px);
-    height: clamp(60px, 20vw, 110px);
-    margin: 0 auto;
-}
-.mil-reveal-frame img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
 .mil-reveal-box {
     opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255,159,0,0.95);
-    transform-origin: left;
-    will-change: transform, opacity;
-    animation: showThenHideBox 1.8s cubic-bezier(.22,1,.36,1) forwards;
+    animation: showThenHideBox 1.4s ease forwards;
     animation-delay: 2.6s;
+    transform-origin: left;
 }
 .mil-preloader-animation .mil-animation-2 img {
     opacity: 0;
@@ -60,6 +40,14 @@
 }
 @keyframes fadeOutText {
     to { opacity: 0; visibility: hidden; }
+}
+@keyframes showThenHideBox {
+    0% { opacity: 1; transform: scaleX(1); }
+    60% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 1; transform: scaleX(0); }
+}
+@keyframes fadeInLogo {
+    to { opacity: 1; }
 }
 
 /* Photo slideshow: fades between images every 5 seconds */
@@ -167,8 +155,6 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    position: relative;
-    z-index: 2;
 }
 
 .mil-reveal-box {
@@ -178,28 +164,26 @@
     width: 100%;
     height: 100%;
     margin: 0;
-    background: rgba(255,159,0,0.95);
+    background: #ff8c00; /* change to your exact orange if different */
     opacity: 0;
-    transform-origin: left;
-    will-change: transform, opacity;
-    animation: showThenHideBox 1.8s cubic-bezier(.22,1,.36,1) forwards;
+    animation: showThenHideBox 1.4s ease forwards;
     animation-delay: 2.6s;
+    transform-origin: left;
 }
 
 .mil-preloader-animation .mil-animation-2 img {
     opacity: 0;
     animation: fadeInLogo 0.8s ease forwards;
-    animation-delay: 4.8s;
+    animation-delay: 4.2s;
 }
 
 @keyframes fadeOutText {
     to { opacity: 0; visibility: hidden; }
 }
 @keyframes showThenHideBox {
-    0% { opacity: 0; transform: scaleX(0); }
-    25% { opacity: 1; transform: scaleX(1); }
-    65% { opacity: 1; transform: scaleX(1); }
-    100% { opacity: 0; transform: scaleX(0); }
+    0% { opacity: 1; transform: scaleX(1); }
+    60% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 1; transform: scaleX(0); }
 }
 @keyframes fadeInLogo {
     to { opacity: 1; }
@@ -208,44 +192,6 @@
 /* ...keep the rest of your original style block below this (slideshow, circle photo, review avatar etc.) unchanged */
 
 
-</style>
-
-<style>
-/* Gold background blobs for hero */
-.mil-banner { position: relative; overflow: hidden; }
-.mil-banner-content { position: relative; z-index: 2; }
-.gold-anim { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-.gold-blob { position: absolute; border-radius: 50%; filter: blur(40px); mix-blend-mode: screen; opacity: 0.9; }
-.gold-blob.b1 { width: 36vmax; height: 36vmax; left: 10%; top: 20%; background: radial-gradient(circle at 35% 35%, rgba(255,197,79,0.20) 0%, rgba(255,155,0,0.06) 40%, transparent 60%); animation: float1 20s ease-in-out infinite; }
-.gold-blob.b2 { width: 28vmax; height: 28vmax; left: 78%; top: 36%; background: radial-gradient(circle at 40% 30%, rgba(255,215,102,0.16) 0%, rgba(255,140,0,0.05) 45%, transparent 70%); animation: float2 24s ease-in-out infinite; }
-.gold-blob.b3 { width: 30vmax; height: 30vmax; left: 55%; top: 82%; background: radial-gradient(circle at 50% 50%, rgba(255,180,60,0.14) 0%, rgba(255,130,0,0.04) 50%, transparent 75%); animation: float3 26s ease-in-out infinite; }
-
-@keyframes float1 {
-    0% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-6%) scale(1.03); }
-    100% { transform: translateY(0) scale(1); }
-}
-@keyframes float2 {
-    0% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-8%) scale(1.04); }
-    100% { transform: translateY(0) scale(1); }
-}
-@keyframes float3 {
-    0% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-10%) scale(1.05); }
-    100% { transform: translateY(0) scale(1); }
-}
-
-@media screen and (max-width: 768px) {
-    .gold-blob { filter: blur(30px); }
-    .gold-blob.b1, .gold-blob.b2, .gold-blob.b3 { width: 60vw; height: 60vw; }
-}
-
-/* small gold accent for about photo */
-.about-gold { position: absolute; inset: auto 0 10% 60%; z-index: 0; pointer-events: none; }
-.about-gold .gold-blob.small { width: 22vw; height: 22vw; filter: blur(28px); background: radial-gradient(circle at 30% 30%, rgba(255,200,80,0.18) 0%, rgba(255,140,0,0.06) 45%, transparent 70%); animation: floatA 18s ease-in-out infinite; }
-
-@keyframes floatA { 0% { transform: translateY(0) scale(1);} 50% { transform: translateY(-6%) scale(1.02);} 100% { transform: translateY(0) scale(1);} }
 </style>
 </head>
 
@@ -276,7 +222,8 @@
  <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <img src="Pics/chayamana%20logo.png" width="auto" height="auto" alt="description" class="preloader-chaya-logo">
+                        <img src="Pics/chayamana%20logo.png" width="auto" height="auto" alt="description">
+
                     </div>
                 </div>
 
@@ -443,22 +390,19 @@
             <div id="swupMain" class="mil-main-transition">
 
                 <!-- banner -->
-                <section class="mil-inner-banner">
-                    <div class="gold-anim" aria-hidden="true">
-                        <span class="gold-blob b1"></span>
-                        <span class="gold-blob b2"></span>
-                        <span class="gold-blob b3"></span>
-                    </div>
-                    <div class="mil-banner-content mil-up">
+                <section class="mil-banner mil-dark-bg">
+                    <div class="mi-invert-fix">
                         <div class="mil-animation-frame">
-                            <div class="mil-animation mil-position-4 mil-dark mil-scale" data-value-1="6" data-value_2="1.4"></div>
+                            <div class="mil-animation mil-position-1 mil-scale" data-value-1="7" data-value-2="1.6"></div>
+                            <div class="mil-animation mil-position-2 mil-scale" data-value-1="4" data-value-2="1"></div>
+                            <div class="mil-animation mil-position-3 mil-scale" data-value-1="1.2" data-value-2=".1"></div>
                         </div>
-    <br>
-<div class="chaya-wrap">
-    <img class="chaya-logo" src="Pics/chayamana logo.png" alt="CHAYAMANA logo">
-</div>
-<br>
-<h3 class="mil-muted mil-mb-60">About <span class="mil-thin">CHAYAMANA</span></h3>
+
+                        <div class="mil-gradient"></div>
+
+                        <div class="container">
+                            <div class="mil-banner-content mil-up">
+<br><img src="Pics/chayamana logo.png" width="500" height="125" alt="description"> <br>                             <h3 class="mil-muted mil-mb-60">About <span class="mil-thin">CHAYAMANA</span></h3>
                                 <div class="row">
                                     <div class="col-md-2 col-lg-8">
                                         <p class="mil-light-soft mil-mb-80">CHAYAMANA is the flagship annual photography exhibition and competition organized by the Mahanama College Photographic Art Society (MCPAS). It provides a platform for young photographers across Sri Lanka to showcase their creativity, share unique perspectives, and celebrate the art of photography while promoting artistic excellence, technical skill, and innovation.
@@ -532,9 +476,9 @@ appreciation for photography.</p>
 
                                 <div class="mil-about-photo mil-mb-90">
                                     <div class="mil-lines-place"></div>
-                                    <div class="mil-up mil-img-frame mil-photo-slideshow" style="padding-bottom: 160%; position: relative;">
-                                        <img src="Pics/FB_IMG_1783184384167.jpg.jpeg" class="mil-slide-img mil-slide-active" alt="Chayamana photo 1">
-                                        <img src="Pics/EQ0A4864.jpg" class="mil-slide-img" alt="Chayamana photo 2">
+                                    <div class="mil-up mil-img-frame mil-photo-slideshow" style="padding-bottom: 160%;">
+                                        <img src="Pics/FB_IMG_1783184384167.jpg.jpeg" class="mil-slide-img mil-slide-active">
+                                        <img src="Pics/EQ0A4864.jpg" class="mil-slide-img">
                                     </div>
                                 </div>
 
@@ -937,11 +881,9 @@ appreciation for photography.</p>
                 <!-- blog end -->
 <!-- map -->
 <div class="mil-map-frame mil-up">
-    <a href="https://www.google.com/maps/search/?api=1&query=Mahanama+College+Colombo+03+Sri+Lanka" target="_blank" rel="noopener" class="mil-map-link">
-        <div class="mil-map">
-            <iframe src="https://www.google.com/maps?q=Mahanama+College+Colombo+03&output=embed" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-    </a>
+    <div class="mil-map">
+        <iframe src="https://www.google.com/maps?q=Mahanama+College+Colombo+03&output=embed" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
 </div>
 <!-- map end -->
 
@@ -1200,30 +1142,17 @@ appreciation for photography.</p>
     });
     </script>
 
-    <!-- photo slideshow script: cycles about section images every 5 seconds -->
+    <!-- photo slideshow script: cycles images every 5 seconds -->
     <script>
     document.addEventListener('DOMContentLoaded', function () {
         const slides = document.querySelectorAll('.mil-photo-slideshow .mil-slide-img');
         let current = 0;
 
         if (slides.length > 1) {
-            slides.forEach((slide, index) => {
-                slide.style.opacity = index === 0 ? '1' : '0';
-                slide.style.transition = 'opacity 1s ease-in-out';
-                slide.style.position = 'absolute';
-                slide.style.top = '0';
-                slide.style.left = '0';
-                slide.style.width = '100%';
-                slide.style.height = '100%';
-                slide.style.objectFit = 'cover';
-            });
-
             setInterval(function () {
                 slides[current].classList.remove('mil-slide-active');
-                slides[current].style.opacity = '0';
                 current = (current + 1) % slides.length;
                 slides[current].classList.add('mil-slide-active');
-                slides[current].style.opacity = '1';
             }, 5000);
         }
     });
