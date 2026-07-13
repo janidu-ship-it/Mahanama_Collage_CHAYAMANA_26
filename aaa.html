@@ -21,6 +21,35 @@
 
     <title>Ashley</title>
 <style>
+.mil-preloader-animation .mil-animation-1 {
+    opacity: 1;
+    visibility: visible;
+    animation: fadeOutText 0.6s ease forwards;
+    animation-delay: 2s;
+}
+.mil-reveal-box {
+    opacity: 0;
+    animation: showThenHideBox 1.4s ease forwards;
+    animation-delay: 2.6s;
+    transform-origin: left;
+}
+.mil-preloader-animation .mil-animation-2 img {
+    opacity: 0;
+    animation: fadeInLogo 0.8s ease forwards;
+    animation-delay: 4.2s;
+}
+@keyframes fadeOutText {
+    to { opacity: 0; visibility: hidden; }
+}
+@keyframes showThenHideBox {
+    0% { opacity: 1; transform: scaleX(1); }
+    60% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 1; transform: scaleX(0); }
+}
+@keyframes fadeInLogo {
+    to { opacity: 1; }
+}
+
 /* Photo slideshow: fades between images every 5 seconds */
 .mil-photo-slideshow {
     position: relative;
@@ -105,6 +134,13 @@
     text-align: center;
 }
 
+.mil-preloader-animation .mil-animation-1 {
+    opacity: 1;
+    visibility: visible;
+    animation: fadeOutText 0.6s ease forwards;
+    animation-delay: 2s;
+}
+
 /* Logo + reveal box container: scales with screen size using clamp() */
 .mil-reveal-frame {
     position: relative;
@@ -121,7 +157,6 @@
     object-fit: contain;
 }
 
-/* Positioning only — GSAP (main.js) owns opacity/animation timing */
 .mil-reveal-box {
     position: absolute;
     top: 0;
@@ -130,8 +165,31 @@
     height: 100%;
     margin: 0;
     background: #ff8c00; /* change to your exact orange if different */
+    opacity: 0;
+    animation: showThenHideBox 1.4s ease forwards;
+    animation-delay: 2.6s;
     transform-origin: left;
 }
+
+.mil-preloader-animation .mil-animation-2 img {
+    opacity: 0;
+    animation: fadeInLogo 0.8s ease forwards;
+    animation-delay: 4.2s;
+}
+
+@keyframes fadeOutText {
+    to { opacity: 0; visibility: hidden; }
+}
+@keyframes showThenHideBox {
+    0% { opacity: 1; transform: scaleX(1); }
+    60% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 1; transform: scaleX(0); }
+}
+@keyframes fadeInLogo {
+    to { opacity: 1; }
+}
+
+/* ...keep the rest of your original style block below this (slideshow, circle photo, review avatar etc.) unchanged */
 
 
 </style>
@@ -159,7 +217,7 @@
                 <div class="mil-pos-abs mil-animation-1">
                     <p class="mil-h3 mil-muted"><B>Light.</B></p>
                     <p class="mil-h3 mil-muted mil-thin">Vision.</p>
-                    <p class="mil-h3 mil-muted"><B>Expression.</B></p>
+                    <p class="mil-h3 mil-muted"><B>ppp.</B></p>
                 </div>
  <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
