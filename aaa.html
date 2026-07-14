@@ -21,35 +21,6 @@
 
     <title>Ashley</title>
 <style>
-.mil-preloader-animation .mil-animation-1 {
-    opacity: 1;
-    visibility: visible;
-    animation: fadeOutText 0.6s ease forwards;
-    animation-delay: 2s;
-}
-.mil-reveal-box {
-    opacity: 0;
-    animation: showThenHideBox 1.4s ease forwards;
-    animation-delay: 2.6s;
-    transform-origin: left;
-}
-.mil-preloader-animation .mil-animation-2 img {
-    opacity: 0;
-    animation: fadeInLogo 0.8s ease forwards;
-    animation-delay: 4.2s;
-}
-@keyframes fadeOutText {
-    to { opacity: 0; visibility: hidden; }
-}
-@keyframes showThenHideBox {
-    0% { opacity: 1; transform: scaleX(1); }
-    60% { opacity: 1; transform: scaleX(1); }
-    100% { opacity: 1; transform: scaleX(0); }
-}
-@keyframes fadeInLogo {
-    to { opacity: 1; }
-}
-
 /* Photo slideshow: fades between images every 5 seconds */
 .mil-photo-slideshow {
     position: relative;
@@ -134,13 +105,6 @@
     text-align: center;
 }
 
-.mil-preloader-animation .mil-animation-1 {
-    opacity: 1;
-    visibility: visible;
-    animation: fadeOutText 0.6s ease forwards;
-    animation-delay: 2s;
-}
-
 /* Logo + reveal box container: scales with screen size using clamp() */
 .mil-reveal-frame {
     position: relative;
@@ -157,6 +121,7 @@
     object-fit: contain;
 }
 
+/* Positioning only — GSAP (main.js) owns opacity/animation timing */
 .mil-reveal-box {
     position: absolute;
     top: 0;
@@ -165,31 +130,8 @@
     height: 100%;
     margin: 0;
     background: #ff8c00; /* change to your exact orange if different */
-    opacity: 0;
-    animation: showThenHideBox 1.4s ease forwards;
-    animation-delay: 2.6s;
     transform-origin: left;
 }
-
-.mil-preloader-animation .mil-animation-2 img {
-    opacity: 0;
-    animation: fadeInLogo 0.8s ease forwards;
-    animation-delay: 4.2s;
-}
-
-@keyframes fadeOutText {
-    to { opacity: 0; visibility: hidden; }
-}
-@keyframes showThenHideBox {
-    0% { opacity: 1; transform: scaleX(1); }
-    60% { opacity: 1; transform: scaleX(1); }
-    100% { opacity: 1; transform: scaleX(0); }
-}
-@keyframes fadeInLogo {
-    to { opacity: 1; }
-}
-
-/* ...keep the rest of your original style block below this (slideshow, circle photo, review avatar etc.) unchanged */
 
 
 </style>
@@ -217,7 +159,7 @@
                 <div class="mil-pos-abs mil-animation-1">
                     <p class="mil-h3 mil-muted"><B>Light.</B></p>
                     <p class="mil-h3 mil-muted mil-thin">Vision.</p>
-                    <p class="mil-h3 mil-muted"><B>ppp.</B></p>
+                    <p class="mil-h3 mil-muted"><B>Expression.</B></p>
                 </div>
  <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
@@ -402,7 +344,7 @@
 
                         <div class="container">
                             <div class="mil-banner-content mil-up">
-<br><img src="Pics/chayamana logo.png" width="500" height="125" alt="description"> <br>                             <h3 class="mil-muted mil-mb-60">About <span class="mil-thin">CHAYAMANA</span></h3>
+<br><img src="Pics/chayamana logo.png" width="500" height="125" alt="description" style="max-width: 100%; height: auto;"> <br>                             <h3 class="mil-muted mil-mb-60">About <span class="mil-thin">CHAYAMANA</span></h3>
                                 <div class="row">
                                     <div class="col-md-2 col-lg-8">
                                         <p class="mil-light-soft mil-mb-80">CHAYAMANA is the flagship annual photography exhibition and competition organized by the Mahanama College Photographic Art Society (MCPAS). It provides a platform for young photographers across Sri Lanka to showcase their creativity, share unique perspectives, and celebrate the art of photography while promoting artistic excellence, technical skill, and innovation.
@@ -1183,18 +1125,37 @@ appreciation for photography.</p>
         }
         var innerImg = bullet.querySelector('img');
         if (innerImg) innerImg.remove();
-        bullet.textContent = ''; // clears any leftover "undefined" text
+
+        // Remove any lingering text nodes (fixes stray "undefined" label)
+        Array.from(bullet.childNodes).forEach(function (node) {
+            if (node.nodeType === Node.TEXT_NODE) node.remove();
+        });
 
         var photo = bulletPhotos[index % bulletPhotos.length];
-        bullet.style.backgroundImage = "url('" + encodeURI(photo) + "')";
-        bullet.style.backgroundSize = "cover";
-        bullet.style.backgroundPosition = "center";
-        bullet.style.backgroundRepeat = "no-repeat";
+
+        // The template's CSS sets each .mil-custom-dot.mil-slide-N with its own
+        // background-image (the original demo stock photos). That inner element
+        // sits on top of the bullet, so we must override IT, not just the bullet.
+        var dot = bullet.querySelector('.mil-custom-dot');
+        if (dot) {
+            dot.style.backgroundImage = "url('" + encodeURI(photo) + "')";
+            dot.style.backgroundSize = "cover";
+            dot.style.backgroundPosition = "center";
+            dot.style.backgroundRepeat = "no-repeat";
+        } else {
+            // Fallback: no inner dot found, style the bullet itself
+            bullet.style.backgroundImage = "url('" + encodeURI(photo) + "')";
+            bullet.style.backgroundSize = "cover";
+            bullet.style.backgroundPosition = "center";
+            bullet.style.backgroundRepeat = "no-repeat";
+        }
     });
 }
 
-        var paginationContainer = document.querySelector('.mil-revi-pagination');
-        if (paginationContainer) {
+        function setupBulletWatcher() {
+            var paginationContainer = document.querySelector('.mil-revi-pagination');
+            if (!paginationContainer) return;
+
             var initialCheck = setInterval(function () {
                 if (paginationContainer.querySelector('.swiper-pagination-bullet')) {
                     applyBulletPhotos();
@@ -1205,6 +1166,20 @@ appreciation for photography.</p>
             var observer = new MutationObserver(applyBulletPhotos);
             observer.observe(paginationContainer, { childList: true, subtree: true });
         }
+
+        setupBulletWatcher();
+
+        // Re-apply when Swup swaps in page content (in-site nav, e.g. going to
+        // Contact then back) so bullets don't lose their photos / show "undefined"
+        document.addEventListener('swup:contentReplaced', setupBulletWatcher);
+
+        // Re-apply when the page is restored from the browser's back/forward
+        // cache (bfcache) after clicking the native Back button
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                setupBulletWatcher();
+            }
+        });
     });
     </script>
 </body>
