@@ -2745,6 +2745,9 @@ revievs
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-7 {
   background-image: url(../img/faces/customers/7.jpg);
 }
+.mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-8 {
+  background-image: url(../img/faces/customers/7.jpg);
+}
 .mil-revi-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   -webkit-box-shadow: inset 0 0 0 4px rgb(255, 152, 0);
           box-shadow: inset 0 0 0 4px rgb(255, 152, 0);
