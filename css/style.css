@@ -2853,8 +2853,12 @@ blog
 .mil-blog-card .mil-post-descr .mil-post-text {
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+.your-class {
+  display: -webkit-box;
   -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* adds "..." at the cut-off point */
+}  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 .mil-blog-card:hover .mil-cover-frame img {
