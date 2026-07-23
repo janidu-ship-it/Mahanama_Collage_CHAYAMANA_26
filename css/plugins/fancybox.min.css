@@ -15,7 +15,7 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox-container {
-    -webkit-backface-visibility: hidden;
+    
     height: 100%;
     left: 0;
     outline: none;
