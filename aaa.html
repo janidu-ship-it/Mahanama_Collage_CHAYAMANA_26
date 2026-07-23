@@ -397,7 +397,7 @@
                                     </div>
                                 </div>
 <br>
-                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9yE9lGI3NVYepT7EJzeQDSDDARTqR4iFD-Jla0GFUQQLAmw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">
+                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9yE9lGI3NVYepT7EJzeQDSDDARTqR4iFD-Jla0GFUQQLAmw/viewform?usp=header" target="_blank" rel="noopener" class="mil-button mil-arrow-place mil-btn-space" id="formSubmissionBtn">
     <span>Click Here For SUBMISSION</span>
 </a>
 
@@ -554,7 +554,7 @@ appreciation for photography.</p>
                                                 <img src="img/faces/2.jpg" alt="Team member">
                                                 <div class="mil-description">
                                                     <div class="mil-secrc-text">
-                                                        <h5 class="mil-muted mil-mb-5"><label>Amanda</label><br.
+                                                        <h5 class="mil-muted mil-mb-5"><label>Amanda</label><br
                                                         <p class="mil-link mil-light-soft mil-mb-10">Frontend Dev</p>
                                                         <ul class="mil-social-icons mil-center">
                                                             <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
@@ -1083,6 +1083,20 @@ document.getElementById('mahanama-map').addEventListener('click', function () {
 
             var observer = new MutationObserver(applyBulletPhotos);
             observer.observe(paginationContainer, { childList: true, subtree: true });
+        }
+    });
+    </script>
+
+    <!-- force external form link to bypass swup page-transition hijacking -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var formBtn = document.getElementById('formSubmissionBtn');
+        if (formBtn) {
+            formBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                window.open(this.href, '_blank', 'noopener');
+            }, true); // capture phase: runs before swup's own click listener
         }
     });
     </script>
