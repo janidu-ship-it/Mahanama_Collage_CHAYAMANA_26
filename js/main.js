@@ -386,7 +386,7 @@ $(function () {
 
     ***************************/
     gsap.to('.mil-progress', {
-        height: '100%',
+        height: '200%',
         ease: 'sine',
         scrollTrigger: {
             scrub: 0.3
