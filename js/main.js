@@ -40,7 +40,7 @@ $(function () {
 
     var accent = 'rgba(255, 152, 0, 1)';
     var dark = '#000';
-    var light = '#fff';
+    var light = '#c0c0c0';
 
     /***************************
 
