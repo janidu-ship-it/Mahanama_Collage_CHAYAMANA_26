@@ -189,8 +189,33 @@
     to { opacity: 1; }
 }
 
-/* ...keep the rest of your original style block below this (slideshow, circle photo, review avatar etc.) unchanged */
+/* ============================================================
+   FIX: Submission button in the hero banner
+   Problem: .mil-button (global style) had no width limit, so
+   on this page it stretched full-width and visually collided
+   with the circular "Scroll down" arrow graphic (.mil-circle-text),
+   creating the stacked/overlapping arrows shown in the screenshot.
+   This rule scopes a fixed, sane size ONLY to the banner's
+   submission button, without touching .mil-button anywhere else
+   on the site.
+   ============================================================ */
+.mil-banner-content .mil-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    max-width: 320px;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
 
+/* Keep the circular scroll decoration from overlapping the button */
+.mil-banner-content .mil-circle-text {
+    position: relative;
+    z-index: 1;
+    margin-top: 40px;
+}
 
 </style>
 </head>
@@ -397,7 +422,7 @@
                                     </div>
                                 </div>
 <br>
-                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9yE9lGI3NVYepT7EJzeQDSDDARTqR4iFD-Jla0GFUQQLAmw/viewform?usp=header" target="_blank" rel="noopener" class="mil-button mil-arrow-place mil-btn-space">
+                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSc9yE9lGI3NVYepT7EJzeQDSDDARTqR4iFD-Jla0GFUQQLAmw/viewform?usp=header" target="_blank" rel="noopener" class="mil-button mil-arrow-place mil-btn-space mil-submit-btn">
     <span>Click Here For SUBMISSION</span>
 </a>
 
@@ -554,7 +579,7 @@ appreciation for photography.</p>
                                                 <img src="img/faces/2.jpg" alt="Team member">
                                                 <div class="mil-description">
                                                     <div class="mil-secrc-text">
-                                                        <h5 class="mil-muted mil-mb-5"><label>Amanda</label><br
+                                                        <h5 class="mil-muted mil-mb-5"><label>Amanda</label><br>
                                                         <p class="mil-link mil-light-soft mil-mb-10">Frontend Dev</p>
                                                         <ul class="mil-social-icons mil-center">
                                                             <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
@@ -1086,81 +1111,6 @@ document.getElementById('mahanama-map').addEventListener('click', function () {
         }
     });
     </script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
 </body>
 
+</html>
