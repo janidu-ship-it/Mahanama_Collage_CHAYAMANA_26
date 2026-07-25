@@ -18,8 +18,181 @@
     <!-- ashley scss -->
     <link rel="stylesheet" href="css/style.css">
     <!-- page name -->
-    <title>Ashley</title>
 
+    <title>Ashley</title>
+<style>
+.mil-preloader-animation .mil-animation-1 {
+    opacity: 1;
+    visibility: visible;
+    animation: fadeOutText 0.6s ease forwards;
+    animation-delay: 2s;
+}
+.mil-reveal-box {
+    opacity: 0;
+    animation: showThenHideBox 1.4s ease forwards;
+    animation-delay: 2.6s;
+    transform-origin: left;
+}
+.mil-preloader-animation .mil-animation-2 img {
+    opacity: 0;
+    animation: fadeInLogo 0.8s ease forwards;
+    animation-delay: 4.2s;
+}
+@keyframes fadeOutText {
+    to { opacity: 0; visibility: hidden; }
+}
+@keyframes showThenHideBox {
+    0% { opacity: 1; transform: scaleX(1); }
+    60% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 1; transform: scaleX(0); }
+}
+@keyframes fadeInLogo {
+    to { opacity: 1; }
+}
+
+/* Photo slideshow: fades between images every 5 seconds */
+.mil-photo-slideshow {
+    position: relative;
+    overflow: hidden;
+}
+.mil-slide-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.mil-slide-img.mil-slide-active {
+    opacity: 1;
+}
+
+/* Circle photo: fills a decorative ring with a real photo */
+.mil-team-list {
+    position: relative;
+}
+.mil-circle-photo {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    pointer-events: none;
+}
+.mil-circle-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Small circular avatar above testimonial text, aligned left */
+.mil-review-avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px auto;
+    border: 2px solid #fff;
+}
+
+.mil-review-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mil-preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh; /* fixes mobile browser address-bar height bug */
+    overflow: hidden;
+}
+
+.mil-preloader-animation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Center both stacked layers (text + logo) responsively,
+   instead of the old fixed left/top pixel values */
+.mil-preloader-animation .mil-pos-abs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.mil-preloader-animation .mil-animation-1 {
+    opacity: 1;
+    visibility: visible;
+    animation: fadeOutText 0.6s ease forwards;
+    animation-delay: 2s;
+}
+
+/* Logo + reveal box container: scales with screen size using clamp() */
+.mil-reveal-frame {
+    position: relative;
+    display: inline-block;
+    width: clamp(180px, 60vw, 320px);
+    height: clamp(60px, 20vw, 110px);
+    margin: 0 auto;
+}
+
+.mil-reveal-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.mil-reveal-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: #ff8c00; /* change to your exact orange if different */
+    opacity: 0;
+    animation: showThenHideBox 1.4s ease forwards;
+    animation-delay: 2.6s;
+    transform-origin: left;
+}
+
+.mil-preloader-animation .mil-animation-2 img {
+    opacity: 0;
+    animation: fadeInLogo 0.8s ease forwards;
+    animation-delay: 4.2s;
+}
+
+@keyframes fadeOutText {
+    to { opacity: 0; visibility: hidden; }
+}
+@keyframes showThenHideBox {
+    0% { opacity: 1; transform: scaleX(1); }
+    60% { opacity: 1; transform: scaleX(1); }
+    100% { opacity: 1; transform: scaleX(0); }
+}
+@keyframes fadeInLogo {
+    to { opacity: 1; }
+}
+
+/* ...keep the rest of your original style block below this (slideshow, circle photo, review avatar etc.) unchanged */
+
+
+</style>
 </head>
 
 <body>
@@ -38,24 +211,24 @@
             <div class="mil-choose-text">Сhoose</div>
         </div>
         <!-- cursor end -->
-
         <!-- preloader -->
-        <div class="mil-preloader">
-            <div class="mil-preloader-animation">
+<div class="mil-preloader" style="background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('Pics/651710078_1565111032284712_7099471286168478318_n01.jpg'); background-size: cover; background-position: center;">            
+    <div class="mil-preloader-animation">
                 <div class="mil-pos-abs mil-animation-1">
-                    <p class="mil-h3 mil-muted mil-thin">Pioneering</p>
-                    <p class="mil-h3 mil-muted">Creative</p>
-                    <p class="mil-h3 mil-muted mil-thin">Excellence</p>
+                    <p class="mil-h3 mil-muted"><B>Light.</B></p>
+                    <p class="mil-h3 mil-muted mil-thin">Vision.</p>
+                    <p class="mil-h3 mil-muted"><B>Expression.</B></p>
                 </div>
-                <div class="mil-pos-abs mil-animation-2">
+ <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-h3 mil-muted mil-thin">ashley.com</p>
+                        <img src="Pics/chayamana%20logo.png" width="auto" height="auto" alt="description">
+
                     </div>
                 </div>
+
             </div>
         </div>
-        <!-- preloader end -->
 
         <!-- preloader end -->
 
