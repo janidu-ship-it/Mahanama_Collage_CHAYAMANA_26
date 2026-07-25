@@ -190,14 +190,18 @@
 }
 
 /* ============================================================
-   FIX: Submission button in the hero banner
+   FIX: Submission button + scroll-down circle in the hero banner
    Problem: .mil-button (global style) had no width limit, so
    on this page it stretched full-width and visually collided
    with the circular "Scroll down" arrow graphic (.mil-circle-text),
    creating the stacked/overlapping arrows shown in the screenshot.
-   This rule scopes a fixed, sane size ONLY to the banner's
-   submission button, without touching .mil-button anywhere else
-   on the site.
+   The circle itself is positioned absolutely by the base
+   stylesheet, so it kept floating on top of the button even
+   after the button was constrained. These rules scope a fixed,
+   sane size to the banner's submission button AND pull the
+   circle out of absolute positioning into normal flow, without
+   touching .mil-button or .mil-circle-text anywhere else on
+   the site.
    ============================================================ */
 .mil-banner-content .mil-submit-btn {
     display: inline-flex;
@@ -210,11 +214,18 @@
     z-index: 2;
 }
 
-/* Keep the circular scroll decoration from overlapping the button */
+/* Force the scroll-circle out of absolute positioning so it can't overlap the button */
 .mil-banner-content .mil-circle-text {
-    position: relative;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    display: block;
+    clear: both;
+    width: 150px;
+    margin-top: 50px;
     z-index: 1;
-    margin-top: 40px;
 }
 
 </style>
