@@ -139,9 +139,6 @@ $(function () {
 
     ***************************/
     $(document).ready(function () {
-        if ($(".mil-arrow-place .mil-arrow").length === 0) {
-            $(".mil-arrow").clone().appendTo(".mil-arrow-place");
-        }
         if ($(".mil-animation .mil-dodecahedron").length === 0) {
             $(".mil-dodecahedron").clone().appendTo(".mil-animation");
         }
