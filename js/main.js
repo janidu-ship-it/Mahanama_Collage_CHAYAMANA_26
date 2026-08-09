@@ -1038,10 +1038,18 @@ $(function () {
                 },
             });
 
+            if (window.milReviewSwiper && window.milReviewSwiper.slideTo) {
+                window.milReviewSwiper.slideTo(0, 0);
+            }
+
             initReviewPaginationBullets();
         }
 
         initReviewSlider();
+
+        if (window.milReviewSwiper && window.milReviewSwiper.slideTo) {
+            window.milReviewSwiper.slideTo(0, 0);
+        }
 
         /***************************
 
