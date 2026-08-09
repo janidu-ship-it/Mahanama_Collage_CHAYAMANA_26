@@ -1293,6 +1293,20 @@ frame
 .mil-frame-top .mil-logo {
   pointer-events: all;
   color: rgb(0, 0, 0);
+  position: relative;
+  z-index: 10001;
+}
+
+.mil-frame-top .mil-logo img {
+  display: block;
+  max-height: 56px;
+  width: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
 /* -------------------------------------------
