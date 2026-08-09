@@ -942,10 +942,16 @@ $(function () {
         ***************************/
 
         function initReviewPaginationBullets() {
-            var reviewImages = document.querySelectorAll('.mil-reviews-slider .swiper-slide:not(.swiper-slide-duplicate) .mil-review-avatar img');
-            var bulletPhotos = Array.prototype.map.call(reviewImages, function (img) {
-                return img && img.src ? img.src : null;
-            }).filter(Boolean);
+            var bulletPhotos = [
+                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg',
+                'Pics/Exco/IMG_0267 (1).jpg',
+                'Pics/Exco/IMG_0259 (1).jpg',
+                'Pics/Exco/IMG_0248.jpg',
+                'Pics/Exco/IMG_0272.jpg',
+                'Pics/Exco/IMG_0312.jpg',
+                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg',
+                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg'
+            ];
 
             function applyBulletPhotos() {
                 var bullets = document.querySelectorAll('.mil-revi-pagination .swiper-pagination-bullet');
