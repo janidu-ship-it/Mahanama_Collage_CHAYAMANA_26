@@ -1303,10 +1303,16 @@ frame
   width: auto;
   opacity: 1 !important;
   visibility: visible !important;
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
-  box-shadow: none;
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+  filter: none !important;
 }
 
 /* -------------------------------------------
