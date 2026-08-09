@@ -517,6 +517,7 @@ $(function () {
             prevEl: '.mil-revi-prev',
         },
     })
+    initReviewPaginationBullets();
 
     /***************************
 
