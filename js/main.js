@@ -941,16 +941,13 @@ $(function () {
         ***************************/
 
         function initReviewPaginationBullets() {
-            var bulletPhotos = [
-                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg',
-                'Pics/Exco/IMG_0267 (1).jpg',
-                'Pics/Exco/IMG_0259 (1).jpg',
-                'Pics/Exco/IMG_0248.jpg',
-                'Pics/Exco/IMG_0272.jpg',
-                'Pics/Exco/IMG_0312.jpg',
-                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg',
-                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg'
-            ];
+            var bulletPhotos = [];
+            var reviewImages = document.querySelectorAll('.mil-reviews-slider .swiper-slide:not(.swiper-slide-duplicate) .mil-review-avatar img');
+            reviewImages.forEach(function (img) {
+                if (img && img.src) {
+                    bulletPhotos.push(img.src);
+                }
+            });
 
             function applyBulletPhotos() {
                 var bullets = document.querySelectorAll('.mil-revi-pagination .swiper-pagination-bullet');
@@ -959,15 +956,18 @@ $(function () {
                 bullets.forEach(function (bullet, index) {
                     if (index >= realSlideCount) {
                         bullet.style.display = 'none';
-                        return;
-                    }
-                    bullet.textContent = '';
-                    var photo = bulletPhotos[index % bulletPhotos.length];
-                    if (!photo) {
                         bullet.style.backgroundImage = 'none';
                         return;
                     }
-                    bullet.style.backgroundImage = "url('" + encodeURI(photo) + "')";
+                    bullet.style.display = '';
+                    bullet.textContent = '';
+                    bullet.style.backgroundImage = 'none';
+                    bullet.style.backgroundColor = 'transparent';
+                    var photo = bulletPhotos[index];
+                    if (!photo) {
+                        return;
+                    }
+                    bullet.style.backgroundImage = "url('" + photo + "')";
                     bullet.style.backgroundSize = 'cover';
                     bullet.style.backgroundPosition = 'center';
                     bullet.style.backgroundRepeat = 'no-repeat';
