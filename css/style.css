@@ -1297,17 +1297,20 @@ frame
   z-index: 10001;
 }
 
+.mil-frame-top .mil-logo,
+.mil-frame-top .mil-logo img {
+  background-color: #ffffff !important;
+  border-radius: 50% !important;
+}
+
 .mil-frame-top .mil-logo img {
   display: block;
   max-height: 56px;
   width: auto;
   opacity: 1 !important;
   visibility: visible !important;
-  background: transparent !important;
-  background-color: transparent !important;
   padding: 0 !important;
   margin: 0 !important;
-  border-radius: 0 !important;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
   border: none !important;
