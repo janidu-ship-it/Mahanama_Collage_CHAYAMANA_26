@@ -940,24 +940,108 @@ $(function () {
 
         ***************************/
 
-        var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>']
-        var mySwiper = new Swiper('.mil-reviews-slider', {
-            // If we need pagination
-            pagination: {
-                el: '.mil-revi-pagination',
-                clickable: true,
-                renderBullet: function (index, className) {
-                    return '<span class="' + className + '">' + (menu[index]) + '</span>';
+        function initReviewPaginationBullets() {
+            var bulletPhotos = [
+                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg',
+                'Pics/Exco/IMG_0267 (1).jpg',
+                'Pics/Exco/IMG_0259 (1).jpg',
+                'Pics/Exco/IMG_0248.jpg',
+                'Pics/Exco/IMG_0272.jpg',
+                'Pics/Exco/IMG_0312.jpg',
+                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg',
+                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg'
+            ];
+
+            function applyBulletPhotos() {
+                var bullets = document.querySelectorAll('.mil-revi-pagination .swiper-pagination-bullet');
+                var realSlideCount = document.querySelectorAll('.mil-reviews-slider .swiper-slide:not(.swiper-slide-duplicate)').length;
+
+                bullets.forEach(function (bullet, index) {
+                    if (index >= realSlideCount) {
+                        bullet.style.display = 'none';
+                        return;
+                    }
+                    bullet.textContent = '';
+                    var photo = bulletPhotos[index % bulletPhotos.length];
+                    if (!photo) {
+                        bullet.style.backgroundImage = 'none';
+                        return;
+                    }
+                    bullet.style.backgroundImage = "url('" + encodeURI(photo) + "')";
+                    bullet.style.backgroundSize = 'cover';
+                    bullet.style.backgroundPosition = 'center';
+                    bullet.style.backgroundRepeat = 'no-repeat';
+                });
+            }
+
+            var paginationContainer = document.querySelector('.mil-revi-pagination');
+            if (!paginationContainer) {
+                return;
+            }
+
+            if (window.reviewPaginationObserver) {
+                window.reviewPaginationObserver.disconnect();
+            }
+
+            var initialCheck = setInterval(function () {
+                if (paginationContainer.querySelector('.swiper-pagination-bullet')) {
+                    applyBulletPhotos();
+                    clearInterval(initialCheck);
+                }
+            }, 300);
+
+            window.reviewPaginationObserver = new MutationObserver(function () {
+                applyBulletPhotos();
+            });
+            window.reviewPaginationObserver.observe(paginationContainer, { childList: true, subtree: true });
+        }
+
+        function initReviewSlider() {
+            if (!document.querySelector('.mil-reviews-slider')) {
+                return;
+            }
+
+            if (window.milReviewSwiper && window.milReviewSwiper.destroy) {
+                window.milReviewSwiper.destroy(true, true);
+            }
+
+            var menu = [
+                '<div class="mil-custom-dot mil-slide-1"></div>',
+                '<div class="mil-custom-dot mil-slide-2"></div>',
+                '<div class="mil-custom-dot mil-slide-3"></div>',
+                '<div class="mil-custom-dot mil-slide-4"></div>',
+                '<div class="mil-custom-dot mil-slide-5"></div>',
+                '<div class="mil-custom-dot mil-slide-6"></div>',
+                '<div class="mil-custom-dot mil-slide-7"></div>',
+                '<div class="mil-custom-dot mil-slide-8"></div>'
+            ];
+            window.milReviewSwiper = new Swiper('.mil-reviews-slider', {
+                pagination: {
+                    el: '.mil-revi-pagination',
+                    clickable: true,
+                    renderBullet: function (index, className) {
+                        return '<span class="' + className + '">' + (menu[index]) + '</span>';
+                    },
                 },
-            },
-            speed: 800,
-            effect: 'fade',
-            parallax: true,
-            navigation: {
-                nextEl: '.mil-revi-next',
-                prevEl: '.mil-revi-prev',
-            },
-        })
+                speed: 800,
+                effect: 'fade',
+                parallax: true,
+                initialSlide: 0,
+                loop: false,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.mil-revi-next',
+                    prevEl: '.mil-revi-prev',
+                },
+            });
+
+            initReviewPaginationBullets();
+        }
+
+        initReviewSlider();
 
         /***************************
 

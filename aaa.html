@@ -998,30 +998,6 @@ document.getElementById('mahanama-map').addEventListener('click', function () {
     <!-- ashley js -->
     <script src="js/main.js"></script>
 
-    <!-- auto-slide reviews -->
-    <script>
-    window.addEventListener('load', function () {
-        var attempts = 0;
-        var checkSlider = setInterval(function () {
-            var reviewSlider = document.querySelector('.mil-reviews-slider');
-            attempts++;
-
-            if (reviewSlider && reviewSlider.swiper) {
-                reviewSlider.swiper.params.autoplay = {
-                    delay: 3000,
-                    disableOnInteraction: false
-                };
-                reviewSlider.swiper.autoplay.start();
-                clearInterval(checkSlider);
-            }
-
-            if (attempts > 20) {
-                clearInterval(checkSlider);
-            }
-        }, 500);
-    });
-    </script>
-
     <!-- photo slideshow script: cycles images every 5 seconds -->
     <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -1039,53 +1015,6 @@ document.getElementById('mahanama-map').addEventListener('click', function () {
     </script>
 
     <!-- reviews pagination bullet photos (auto-reapplies if Swiper rebuilds bullets) -->
-    <script>
-    window.addEventListener('load', function () {
-        var bulletPhotos = [
-            'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg',
-            'Pics/Exco/IMG_0267 (1).jpg',
-            'Pics/Exco/IMG_0259 (1).jpg',
-            'Pics/Exco/IMG_0248.jpg',
-            'Pics/Exco/IMG_0272.jpg',
-            'Pics/Exco/IMG_0312.jpg',
-            'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg'
-        ];
-
-       function applyBulletPhotos() {
-    var bullets = document.querySelectorAll('.mil-revi-pagination .swiper-pagination-bullet');
-    var realSlideCount = document.querySelectorAll('.mil-reviews-slider .swiper-slide:not(.swiper-slide-duplicate)').length;
-
-    bullets.forEach(function (bullet, index) {
-        if (index >= realSlideCount) {
-            bullet.style.display = 'none';
-            return;
-        }
-        var innerImg = bullet.querySelector('img');
-        if (innerImg) innerImg.remove();
-        bullet.textContent = ''; // clears any leftover "undefined" text
-
-        var photo = bulletPhotos[index % bulletPhotos.length];
-        bullet.style.backgroundImage = "url('" + encodeURI(photo) + "')";
-        bullet.style.backgroundSize = "cover";
-        bullet.style.backgroundPosition = "center";
-        bullet.style.backgroundRepeat = "no-repeat";
-    });
-}
-
-        var paginationContainer = document.querySelector('.mil-revi-pagination');
-        if (paginationContainer) {
-            var initialCheck = setInterval(function () {
-                if (paginationContainer.querySelector('.swiper-pagination-bullet')) {
-                    applyBulletPhotos();
-                    clearInterval(initialCheck);
-                }
-            }, 300);
-
-            var observer = new MutationObserver(applyBulletPhotos);
-            observer.observe(paginationContainer, { childList: true, subtree: true });
-        }
-    });
-    </script>
 <!-- Code injected by live-server -->
 <script>
 	// <![CDATA[  <-- For SVG support
