@@ -499,14 +499,14 @@ $(function () {
 
     ***************************/
 
-    var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>']
+    var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>', '<div class="mil-custom-dot mil-slide-8"></div>']
     var mySwiper = new Swiper('.mil-reviews-slider', {
         // If we need pagination
         pagination: {
             el: '.mil-revi-pagination',
             clickable: true,
             renderBullet: function (index, className) {
-                return '<span class="' + className + '">' + (menu[index]) + '</span>';
+                return '<span class="' + className + '">' + (menu[index] || '') + '</span>';
             },
         },
         speed: 800,
@@ -942,13 +942,10 @@ $(function () {
         ***************************/
 
         function initReviewPaginationBullets() {
-            var bulletPhotos = [];
             var reviewImages = document.querySelectorAll('.mil-reviews-slider .swiper-slide:not(.swiper-slide-duplicate) .mil-review-avatar img');
-            reviewImages.forEach(function (img) {
-                if (img && img.src) {
-                    bulletPhotos.push(img.src);
-                }
-            });
+            var bulletPhotos = Array.prototype.map.call(reviewImages, function (img) {
+                return img && img.src ? img.src : null;
+            }).filter(Boolean);
 
             function applyBulletPhotos() {
                 var bullets = document.querySelectorAll('.mil-revi-pagination .swiper-pagination-bullet');
@@ -957,21 +954,32 @@ $(function () {
                 bullets.forEach(function (bullet, index) {
                     if (index >= realSlideCount) {
                         bullet.style.display = 'none';
-                        bullet.style.backgroundImage = 'none';
+                        var dot = bullet.querySelector('.mil-custom-dot');
+                        if (dot) {
+                            dot.style.backgroundImage = 'none';
+                        }
                         return;
                     }
                     bullet.style.display = '';
-                    bullet.textContent = '';
-                    bullet.style.backgroundImage = 'none';
-                    bullet.style.backgroundColor = 'transparent';
+                    var dot = bullet.querySelector('.mil-custom-dot');
                     var photo = bulletPhotos[index];
                     if (!photo) {
+                        if (dot) {
+                            dot.style.backgroundImage = 'none';
+                        }
                         return;
                     }
-                    bullet.style.backgroundImage = "url('" + photo + "')";
-                    bullet.style.backgroundSize = 'cover';
-                    bullet.style.backgroundPosition = 'center';
-                    bullet.style.backgroundRepeat = 'no-repeat';
+                    if (dot) {
+                        dot.style.backgroundImage = "url('" + encodeURI(photo) + "')";
+                        dot.style.backgroundSize = 'cover';
+                        dot.style.backgroundPosition = 'center';
+                        dot.style.backgroundRepeat = 'no-repeat';
+                    } else {
+                        bullet.style.backgroundImage = "url('" + encodeURI(photo) + "')";
+                        bullet.style.backgroundSize = 'cover';
+                        bullet.style.backgroundPosition = 'center';
+                        bullet.style.backgroundRepeat = 'no-repeat';
+                    }
                 });
             }
 
@@ -1021,7 +1029,7 @@ $(function () {
                     el: '.mil-revi-pagination',
                     clickable: true,
                     renderBullet: function (index, className) {
-                        return '<span class="' + className + '">' + (menu[index]) + '</span>';
+                        return '<span class="' + className + '">' + (menu[index] || '') + '</span>';
                     },
                 },
                 speed: 800,
