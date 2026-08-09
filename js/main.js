@@ -499,14 +499,13 @@ $(function () {
 
     ***************************/
 
-    var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>', '<div class="mil-custom-dot mil-slide-8"></div>']
     var mySwiper = new Swiper('.mil-reviews-slider', {
         // If we need pagination
         pagination: {
             el: '.mil-revi-pagination',
             clickable: true,
             renderBullet: function (index, className) {
-                return '<span class="' + className + '">' + (menu[index] || '') + '</span>';
+                return '<span class="' + className + '"><span class="mil-custom-dot"></span></span>';
             },
         },
         speed: 800,
@@ -942,19 +941,16 @@ $(function () {
         ***************************/
 
         function initReviewPaginationBullets() {
-            var bulletPhotos = [
-                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg',
-                'Pics/Exco/IMG_0267 (1).jpg',
-                'Pics/Exco/IMG_0259 (1).jpg',
-                'Pics/Exco/IMG_0248.jpg',
-                'Pics/Exco/IMG_0272.jpg',
-                'Pics/Exco/IMG_0312.jpg',
-                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg',
-                'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg'
-            ];
+            function getBulletPhotos() {
+                var images = document.querySelectorAll('.mil-reviews-slider .swiper-slide:not(.swiper-slide-duplicate) .mil-review-avatar img');
+                return Array.from(images).map(function (img) {
+                    return img.src;
+                });
+            }
 
             function applyBulletPhotos() {
                 var bullets = document.querySelectorAll('.mil-revi-pagination .swiper-pagination-bullet');
+                var bulletPhotos = getBulletPhotos();
                 var realSlideCount = document.querySelectorAll('.mil-reviews-slider .swiper-slide:not(.swiper-slide-duplicate)').length;
 
                 bullets.forEach(function (bullet, index) {
@@ -976,12 +972,12 @@ $(function () {
                         return;
                     }
                     if (dot) {
-                        dot.style.backgroundImage = "url('" + encodeURI(photo) + "')";
+                        dot.style.backgroundImage = "url('" + photo + "')";
                         dot.style.backgroundSize = 'cover';
                         dot.style.backgroundPosition = 'center';
                         dot.style.backgroundRepeat = 'no-repeat';
                     } else {
-                        bullet.style.backgroundImage = "url('" + encodeURI(photo) + "')";
+                        bullet.style.backgroundImage = "url('" + photo + "')";
                         bullet.style.backgroundSize = 'cover';
                         bullet.style.backgroundPosition = 'center';
                         bullet.style.backgroundRepeat = 'no-repeat';
