@@ -139,9 +139,15 @@ $(function () {
 
     ***************************/
     $(document).ready(function () {
-        $(".mil-arrow").clone().appendTo(".mil-arrow-place");
-        $(".mil-dodecahedron").clone().appendTo(".mil-animation");
-        $(".mil-lines").clone().appendTo(".mil-lines-place");
+        if ($(".mil-arrow-place .mil-arrow").length === 0) {
+            $(".mil-arrow").clone().appendTo(".mil-arrow-place");
+        }
+        if ($(".mil-animation .mil-dodecahedron").length === 0) {
+            $(".mil-dodecahedron").clone().appendTo(".mil-animation");
+        }
+        if ($(".mil-lines-place .mil-lines").length === 0) {
+            $(".mil-lines").clone().appendTo(".mil-lines-place");
+        }
         $(".mil-main-menu ul li.mil-active > a").clone().appendTo(".mil-current-page");
     });
     /***************************
@@ -640,7 +646,7 @@ $(function () {
 
         ***************************/
         $(document).ready(function () {
-            $(".mil-arrow-place .mil-arrow, .mil-animation .mil-dodecahedron, .mil-current-page a").remove();
+            $(".mil-arrow-place .mil-arrow, .mil-animation .mil-dodecahedron, .mil-lines-place .mil-lines, .mil-current-page a").remove();
             $(".mil-arrow").clone().appendTo(".mil-arrow-place");
             $(".mil-dodecahedron").clone().appendTo(".mil-animation");
             $(".mil-lines").clone().appendTo(".mil-lines-place");
