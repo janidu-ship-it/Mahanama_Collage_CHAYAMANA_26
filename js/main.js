@@ -19,7 +19,7 @@ $(function () {
 
     ***************************/
     const options = {
-        containers: ['#swupMain'],
+        containers: ['#swupMain', '#swupMenu'],
         animateHistoryBrowsing: true,
         linkSelector: 'a:not([data-no-swup])',
         animationSelector: '[class="mil-main-transition"]'
@@ -40,7 +40,7 @@ $(function () {
 
     var accent = 'rgba(255, 152, 0, 1)';
     var dark = '#000';
-    var light = '#ffff';
+    var light = '#fff';
 
     /***************************
 
@@ -139,12 +139,9 @@ $(function () {
 
     ***************************/
     $(document).ready(function () {
-        if ($(".mil-animation .mil-dodecahedron").length === 0) {
-            $(".mil-dodecahedron").clone().appendTo(".mil-animation");
-        }
-        if ($(".mil-lines-place .mil-lines").length === 0) {
-            $(".mil-lines").clone().appendTo(".mil-lines-place");
-        }
+        $(".mil-arrow").clone().appendTo(".mil-arrow-place");
+        $(".mil-dodecahedron").clone().appendTo(".mil-animation");
+        $(".mil-lines").clone().appendTo(".mil-lines-place");
         $(".mil-main-menu ul li.mil-active > a").clone().appendTo(".mil-current-page");
     });
     /***************************
@@ -389,7 +386,7 @@ $(function () {
 
     ***************************/
     gsap.to('.mil-progress', {
-        height: '200%',
+        height: '100%',
         ease: 'sine',
         scrollTrigger: {
             scrub: 0.3
@@ -502,13 +499,14 @@ $(function () {
 
     ***************************/
 
+    var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>']
     var mySwiper = new Swiper('.mil-reviews-slider', {
         // If we need pagination
         pagination: {
             el: '.mil-revi-pagination',
             clickable: true,
             renderBullet: function (index, className) {
-                return '<span class="' + className + '"><span class="mil-custom-dot"></span></span>';
+                return '<span class="' + className + '">' + (menu[index]) + '</span>';
             },
         },
         speed: 800,
@@ -519,7 +517,6 @@ $(function () {
             prevEl: '.mil-revi-prev',
         },
     })
-    initReviewPaginationBullets();
 
     /***************************
 
@@ -643,7 +640,7 @@ $(function () {
 
         ***************************/
         $(document).ready(function () {
-            $(".mil-arrow-place .mil-arrow, .mil-animation .mil-dodecahedron, .mil-lines-place .mil-lines, .mil-current-page a").remove();
+            $(".mil-arrow-place .mil-arrow, .mil-animation .mil-dodecahedron, .mil-current-page a").remove();
             $(".mil-arrow").clone().appendTo(".mil-arrow-place");
             $(".mil-dodecahedron").clone().appendTo(".mil-animation");
             $(".mil-lines").clone().appendTo(".mil-lines-place");
@@ -943,127 +940,24 @@ $(function () {
 
         ***************************/
 
-        function initReviewPaginationBullets() {
-            function getBulletPhotos() {
-                var images = document.querySelectorAll('.mil-reviews-slider .swiper-slide:not(.swiper-slide-duplicate) .mil-review-avatar img');
-                return Array.from(images).map(function (img) {
-                    return img.src;
-                });
-            }
-
-            function applyBulletPhotos() {
-                var bullets = document.querySelectorAll('.mil-revi-pagination .swiper-pagination-bullet');
-                var bulletPhotos = getBulletPhotos();
-                var realSlideCount = document.querySelectorAll('.mil-reviews-slider .swiper-slide:not(.swiper-slide-duplicate)').length;
-
-                bullets.forEach(function (bullet, index) {
-                    if (index >= realSlideCount) {
-                        bullet.style.display = 'none';
-                        var dot = bullet.querySelector('.mil-custom-dot');
-                        if (dot) {
-                            dot.style.backgroundImage = 'none';
-                        }
-                        return;
-                    }
-                    bullet.style.display = '';
-                    var dot = bullet.querySelector('.mil-custom-dot');
-                    var photo = bulletPhotos[index];
-                    if (!photo) {
-                        if (dot) {
-                            dot.style.backgroundImage = 'none';
-                        }
-                        return;
-                    }
-                    if (dot) {
-                        dot.style.backgroundImage = "url('" + photo + "')";
-                        dot.style.backgroundSize = 'cover';
-                        dot.style.backgroundPosition = 'center';
-                        dot.style.backgroundRepeat = 'no-repeat';
-                    } else {
-                        bullet.style.backgroundImage = "url('" + photo + "')";
-                        bullet.style.backgroundSize = 'cover';
-                        bullet.style.backgroundPosition = 'center';
-                        bullet.style.backgroundRepeat = 'no-repeat';
-                    }
-                });
-            }
-
-            var paginationContainer = document.querySelector('.mil-revi-pagination');
-            if (!paginationContainer) {
-                return;
-            }
-
-            if (window.reviewPaginationObserver) {
-                window.reviewPaginationObserver.disconnect();
-            }
-
-            var initialCheck = setInterval(function () {
-                if (paginationContainer.querySelector('.swiper-pagination-bullet')) {
-                    applyBulletPhotos();
-                    clearInterval(initialCheck);
-                }
-            }, 300);
-
-            window.reviewPaginationObserver = new MutationObserver(function () {
-                applyBulletPhotos();
-            });
-            window.reviewPaginationObserver.observe(paginationContainer, { childList: true, subtree: true });
-        }
-
-        function initReviewSlider() {
-            if (!document.querySelector('.mil-reviews-slider')) {
-                return;
-            }
-
-            if (window.milReviewSwiper && window.milReviewSwiper.destroy) {
-                window.milReviewSwiper.destroy(true, true);
-            }
-
-            var menu = [
-                '<div class="mil-custom-dot mil-slide-1"></div>',
-                '<div class="mil-custom-dot mil-slide-2"></div>',
-                '<div class="mil-custom-dot mil-slide-3"></div>',
-                '<div class="mil-custom-dot mil-slide-4"></div>',
-                '<div class="mil-custom-dot mil-slide-5"></div>',
-                '<div class="mil-custom-dot mil-slide-6"></div>',
-                '<div class="mil-custom-dot mil-slide-7"></div>',
-                '<div class="mil-custom-dot mil-slide-8"></div>'
-            ];
-            window.milReviewSwiper = new Swiper('.mil-reviews-slider', {
-                pagination: {
-                    el: '.mil-revi-pagination',
-                    clickable: true,
-                    renderBullet: function (index, className) {
-                        return '<span class="' + className + '">' + (menu[index] || '') + '</span>';
-                    },
+        var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>']
+        var mySwiper = new Swiper('.mil-reviews-slider', {
+            // If we need pagination
+            pagination: {
+                el: '.mil-revi-pagination',
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="' + className + '">' + (menu[index]) + '</span>';
                 },
-                speed: 800,
-                effect: 'fade',
-                parallax: true,
-                initialSlide: 0,
-                loop: false,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-                navigation: {
-                    nextEl: '.mil-revi-next',
-                    prevEl: '.mil-revi-prev',
-                },
-            });
-
-            if (window.milReviewSwiper && window.milReviewSwiper.slideTo) {
-                window.milReviewSwiper.slideTo(0, 0);
-            }
-
-            initReviewPaginationBullets();
-        }
-
-        initReviewSlider();
-
-        if (window.milReviewSwiper && window.milReviewSwiper.slideTo) {
-            window.milReviewSwiper.slideTo(0, 0);
-        }
+            },
+            speed: 800,
+            effect: 'fade',
+            parallax: true,
+            navigation: {
+                nextEl: '.mil-revi-next',
+                prevEl: '.mil-revi-prev',
+            },
+        })
 
         /***************************
 
