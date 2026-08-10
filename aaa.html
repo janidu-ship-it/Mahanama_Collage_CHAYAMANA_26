@@ -89,6 +89,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    
 }
 /* Small circular avatar above testimonial text, aligned left */
 .mil-review-avatar {
@@ -105,92 +107,6 @@
     height: 100%;
     object-fit: cover;
 }
-
-.mil-preloader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    height: 100dvh; /* fixes mobile browser address-bar height bug */
-    overflow: hidden;
-}
-
-.mil-preloader-animation {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-/* Center both stacked layers (text + logo) responsively,
-   instead of the old fixed left/top pixel values */
-.mil-preloader-animation .mil-pos-abs {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
-}
-
-.mil-preloader-animation .mil-animation-1 {
-    opacity: 1;
-    visibility: visible;
-    animation: fadeOutText 0.6s ease forwards;
-    animation-delay: 2s;
-}
-
-/* Logo + reveal box container: scales with screen size using clamp() */
-.mil-reveal-frame {
-    position: relative;
-    display: inline-block;
-    width: clamp(180px, 60vw, 320px);
-    height: clamp(60px, 20vw, 110px);
-    margin: 0 auto;
-}
-
-.mil-reveal-frame img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.mil-reveal-box {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    background: #ff8c00; /* change to your exact orange if different */
-    opacity: 0;
-    animation: showThenHideBox 1.4s ease forwards;
-    animation-delay: 2.6s;
-    transform-origin: left;
-}
-
-.mil-preloader-animation .mil-animation-2 img {
-    opacity: 0;
-    animation: fadeInLogo 0.8s ease forwards;
-    animation-delay: 4.2s;
-}
-
-@keyframes fadeOutText {
-    to { opacity: 0; visibility: hidden; }
-}
-@keyframes showThenHideBox {
-    0% { opacity: 1; transform: scaleX(1); }
-    60% { opacity: 1; transform: scaleX(1); }
-    100% { opacity: 1; transform: scaleX(0); }
-}
-@keyframes fadeInLogo {
-    to { opacity: 1; }
-}
-
-/* ...keep the rest of your original style block below this (slideshow, circle photo, review avatar etc.) unchanged */
-
 
 </style>
 </head>
@@ -222,7 +138,7 @@
  <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <img src="Pics/chayamana%20logo.png" width="auto" height="auto" alt="description">
+                        <img src="Pics/chayamana%20logo.png" width="500" height="125" alt="description">
 
                     </div>
                 </div>
@@ -242,7 +158,7 @@
         <div class="mil-menu-frame">
             <!-- frame clone -->
             <div class="mil-frame-top">
-                <a href="home-1.html" class="mil-logo"><img src="IMG_8922.PNG" alt="Logo" style="height: 100px; width: auto;"></a>
+                <a href="home-1.html" class="mil-logo"><img src=""</a>
                 <div class="mil-menu-btn">
                     <span></span>
                 </div>
@@ -369,7 +285,7 @@
         <!-- frame -->
         <div class="mil-frame">
             <div class="mil-frame-top">
-                <a href="home-1.html" class="mil-logo"><img src="IMG_8922.PNG" alt="Logo" style="height: 40px; width: auto;"></a>
+                <a href="home-1.html" class="mil-logo"><a href="home-1.html" class="mil-logo"><img src="Pics/IMG_8922.PNG" alt="Logo" style="height: 40px; width: auto;"></a>
                 <div class="mil-menu-btn">
                     <span></span>
                 </div>
@@ -635,7 +551,7 @@ appreciation for photography.</p>
                                                 <img src="img/faces/3.jpg" alt="Team member">
                                                 <div class="mil-description">
                                                     <div class="mil-secrc-text">
-                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Chama Baduwa</a></h5>
+                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Emma Newman</a></h5>
                                                         <p class="mil-link mil-light-soft mil-mb-10">Founder</p>
                                                         <ul class="mil-social-icons mil-center">
                                                             <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
@@ -651,7 +567,7 @@ appreciation for photography.</p>
                                                 <img src="img/faces/4.jpg" alt="Team member">
                                                 <div class="mil-description">
                                                     <div class="mil-secrc-text">
-                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">pona</a></h5>
+                                                        <h5 class="mil-muted mil-mb-5"><a href="home-2.html">Lisa Trueman</a></h5>
                                                         <p class="mil-link mil-light-soft mil-mb-10">UI/UX Designer</p>
                                                         <ul class="mil-social-icons mil-center">
                                                             <li><a href="#." target="_blank" class="social-icon"> <i class="fab fa-behance"></i></a></li>
@@ -707,7 +623,7 @@ appreciation for photography.</p>
                                         <div class="swiper-slide">
                                             <div class="mil-review-frame mil-center" data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
                                                 <div class="mil-review-avatar">
-                                                    <img src="Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg" alt="Virul Bonula">
+                                                    <img src="C:\Users\kmgim\OneDrive\Desktop\Ashly\Ashley html template\ashley\Pics\Exco\WhatsApp Image 2026-03-10 at 13.06.12.jpeg" alt="Sarah Newman">
                                                 </div>
                                                 <h5 class="mil-up mil-mb-10">Virul Bonula</h5>
                                                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">Club President</p>
@@ -727,27 +643,7 @@ appreciation for photography.</p>
                                         <div class="swiper-slide">
                                             <div class="mil-review-frame mil-center" data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
                                                 <div class="mil-review-avatar">
-                                                    <img src="Pics/Exco/IMG_0259 (1).jpg" alt="Sarah Newman">
-                                                </div>
-                                                <h5 class="mil-up mil-mb-10">Chamathka p kolla baduwa hutto</h5>
-                                                <p class="mil-mb-5 mil-upper mil-up mil-mb-30">Envato market</p>
-                                                <p class="mil-text-xl mil-up">This creative agency stands out with their exceptional talent and expertise. Their ability to think outside the box and bring unique ideas to life is truly impressive. With meticulous attention to detail, they consistently deliver visually stunning and impactful work.</p>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="mil-review-frame mil-center" data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
-                                                <div class="mil-review-avatar">
-                                                    <img src="Pics/Exco/IMG_0248.jpg" alt="Emma Trueman">
-                                                </div>
-                                                <h5 class="mil-up mil-mb-10">Emma Trueman</h5>
-                                                <p class="mil-mb-5 mil-upper mil-up mil-mb-30">Envato market</p>
-                                                <p class="mil-text-xl mil-up">I had the pleasure of working with this creative agency, and I must say, they truly impressed me. They consistently think outside the box, resulting in impressive and impactful work. I highly recommend this agency for their consistent delivery of exceptional creative solutions.</p>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="mil-review-frame mil-center" data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
-                                                <div class="mil-review-avatar">
-                                                    <img src="Pics/Exco/IMG_0272.jpg" alt="Sarah Newman">
+                                                    <img src="C:\Users\kmgim\OneDrive\Desktop\Ashly\Ashley html template\ashley\Pics\Exco\IMG_0259 (1).jpg" alt="Sarah Newman">
                                                 </div>
                                                 <h5 class="mil-up mil-mb-10">Sarah Newman</h5>
                                                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">Envato market</p>
@@ -757,7 +653,27 @@ appreciation for photography.</p>
                                         <div class="swiper-slide">
                                             <div class="mil-review-frame mil-center" data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
                                                 <div class="mil-review-avatar">
-                                                    <img src="Pics/Exco/IMG_0312.jpg" alt="Emma Trueman">
+                                                    <img src="C:\Users\kmgim\OneDrive\Desktop\Ashly\Ashley html template\ashley\Pics\Exco\IMG_0248.jpg" alt="Emma Trueman">
+                                                </div>
+                                                <h5 class="mil-up mil-mb-10">Emma Trueman</h5>
+                                                <p class="mil-mb-5 mil-upper mil-up mil-mb-30">Envato market</p>
+                                                <p class="mil-text-xl mil-up">I had the pleasure of working with this creative agency, and I must say, they truly impressed me. They consistently think outside the box, resulting in impressive and impactful work. I highly recommend this agency for their consistent delivery of exceptional creative solutions.</p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="mil-review-frame mil-center" data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
+                                                <div class="mil-review-avatar">
+                                                    <img src="C:\Users\kmgim\OneDrive\Desktop\Ashly\Ashley html template\ashley\Pics\Exco\IMG_0272.jpg" alt="Sarah Newman">
+                                                </div>
+                                                <h5 class="mil-up mil-mb-10">Sarah Newman</h5>
+                                                <p class="mil-mb-5 mil-upper mil-up mil-mb-30">Envato market</p>
+                                                <p class="mil-text-xl mil-up">This creative agency stands out with their exceptional talent and expertise. Their ability to think outside the box and bring unique ideas to life is truly impressive. With meticulous attention to detail, they consistently deliver visually stunning and impactful work.</p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="mil-review-frame mil-center" data-swiper-parallax="-200" data-swiper-parallax-opacity="0">
+                                                <div class="mil-review-avatar">
+                                                    <img src="C:\Users\kmgim\OneDrive\Desktop\Ashly\Ashley html template\ashley\Pics\Exco\IMG_0312.jpg" alt="Emma Trueman">
                                                 </div>
                                                 <h5 class="mil-up mil-mb-10">Emma Trueman</h5>
                                                 <p class="mil-mb-5 mil-upper mil-up mil-mb-30">Envato market</p>
