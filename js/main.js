@@ -499,14 +499,53 @@ $(function () {
 
     ***************************/
 
-    var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>']
+    var reviewBulletPhotos = [
+        'Pics/Exco/WhatsApp Image 2026-03-10 at 13.06.12.jpeg',
+        'Pics/Exco/IMG_0267 (1).jpg',
+        'Pics/Exco/IMG_0259 (1).jpg',
+        'Pics/Exco/IMG_0248.jpg',
+        'Pics/Exco/IMG_0272.jpg',
+        'Pics/Exco/IMG_0312.jpg',
+        'Pics/Exco/WhatsApp Image 2026-07-20 at 9.17.09 PM.jpeg',
+        'Pics/Exco/WhatsApp Image 2026-07-20 at 9.17.09 PM.jpeg'
+    ];
+
+    function applyReviewBulletPhotos() {
+        var bullets = document.querySelectorAll('.mil-revi-pagination .swiper-pagination-bullet');
+        if (!bullets.length) return;
+
+        bullets.forEach(function (bullet, index) {
+            var photo = reviewBulletPhotos[index % reviewBulletPhotos.length];
+            var dot = bullet.querySelector('.mil-custom-dot') || document.createElement('div');
+
+            if (!bullet.querySelector('.mil-custom-dot')) {
+                dot.className = 'mil-custom-dot';
+                bullet.appendChild(dot);
+            }
+
+            dot.style.backgroundImage = "url('" + encodeURI(photo) + "')";
+            dot.style.backgroundSize = 'cover';
+            dot.style.backgroundPosition = 'center';
+            dot.style.backgroundRepeat = 'no-repeat';
+            dot.style.width = '90px';
+            dot.style.height = '90px';
+            dot.style.borderRadius = '50%';
+            dot.style.display = 'block';
+            dot.style.margin = '0 auto';
+            bullet.style.background = 'transparent';
+            bullet.style.border = '0';
+            bullet.style.boxShadow = 'none';
+            bullet.style.padding = '0';
+        });
+    }
+
     var mySwiper = new Swiper('.mil-reviews-slider', {
-        // If we need pagination
         pagination: {
             el: '.mil-revi-pagination',
             clickable: true,
             renderBullet: function (index, className) {
-                return '<span class="' + className + '">' + (menu[index]) + '</span>';
+                var photo = reviewBulletPhotos[index % reviewBulletPhotos.length];
+                return '<span class="' + className + '"><span class="mil-custom-dot" style="background-image:url(\'' + encodeURI(photo) + '\'); background-size:cover; background-position:center; background-repeat:no-repeat; width:90px; height:90px; border-radius:50%; display:block;"></span></span>';
             },
         },
         speed: 800,
@@ -516,7 +555,15 @@ $(function () {
             nextEl: '.mil-revi-next',
             prevEl: '.mil-revi-prev',
         },
-    })
+        on: {
+            init: function () {
+                applyReviewBulletPhotos();
+            },
+            slideChange: function () {
+                applyReviewBulletPhotos();
+            },
+        }
+    });
 
     /***************************
 
