@@ -67,6 +67,8 @@ main
 
 html,
 body {
+  width: 100%;
+  max-width: 100%;
   padding: 0;
   margin: 0;
   font-family: "Outfit", sans-serif;
@@ -74,8 +76,23 @@ body {
   font-weight: 300;
   color: rgba(0, 0, 0, 0.5);
   line-height: 150%;
+  overflow-x: hidden;
   -ms-scroll-chaining: none;
       overscroll-behavior: none;
+}
+img,
+svg,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.mil-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  width: 100%;
 }
 @media screen and (max-width: 768px) {
   html,
