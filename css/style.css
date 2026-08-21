@@ -1330,6 +1330,65 @@ frame
   margin-right: 0;
   justify-self: flex-end;
 }
+@media screen and (max-width: 640px) {
+  .mil-frame {
+    padding: 0;
+    height: 72px;
+    z-index: 20;
+  }
+  .mil-frame-top {
+    height: 72px;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.96);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 12px;
+  }
+  .mil-frame-top .mil-logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .mil-frame-top .mil-logo img {
+    height: 38px;
+    width: auto;
+  }
+  .mil-frame-top .mil-menu-btn {
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+  }
+  .mil-frame-top .mil-menu-btn span,
+  .mil-frame-top .mil-menu-btn span:before,
+  .mil-frame-top .mil-menu-btn span:after {
+    width: 32px;
+    height: 3px;
+  }
+  .mil-banner {
+    min-height: calc(100vh - 72px);
+    padding-top: 72px;
+  }
+  .mil-banner .mil-banner-content {
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+  .mil-banner .mil-banner-content h3 {
+    font-size: 28px;
+    letter-spacing: 0.04em;
+  }
+  .mil-banner .mil-banner-content p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .mil-banner .mil-banner-content .mil-circle-text {
+    display: none;
+  }
+}
 
 /* -------------------------------------------
 
